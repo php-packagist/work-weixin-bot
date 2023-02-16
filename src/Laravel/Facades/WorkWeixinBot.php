@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpPackagist\WorkWeixinBot\Laravel;
+namespace PhpPackagist\WorkWeixinBot\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
