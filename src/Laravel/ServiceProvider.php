@@ -25,7 +25,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function setupConfig(): void
     {
-        $source = realpath($raw = __DIR__.'/../config/work-weixin-bot.php') ?: $raw;
+        $source = realpath($raw = __DIR__.'/../../config/work-weixin-bot.php') ?: $raw;
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
