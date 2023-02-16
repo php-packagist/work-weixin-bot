@@ -1,26 +1,28 @@
 name: Test
 on: [push, pull_request]
 
-env:
-  BOT_KEY: ${{ secrets.BOT_KEY }}
-
 jobs:
   pest:
-    name: PHP-${{ matrix.php_version }}-${{ matrix.perfer }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        php_version:
-          - 7.4
-          - 8.0
-          - 8.1
-        perfer:
-          - stable
-          # - lowest
+        php: [ 8.2, 8.1, 8.0, 7.4 ]
+        perfer: [stable]
+    name: PHP-${{ matrix.php }}-${{ matrix.perfer }}
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
       - name: Install Dependencies
         run: composer update --prefer-dist --no-interaction --no-suggest --prefer-${{ matrix.perfer }}
+
       - name: Run Test
         run: composer test
+        env:
+          BOT_KEY: ${{ secrets.BOT_KEY }}
