@@ -14,10 +14,10 @@
     },
     "require": {
         "php": ">=7.4",
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^6.5 || ^7.5"
     },
     "suggest": {
-        "illuminate/support": "^10.0|^9.0|^8.0|^7.0"
+        "illuminate/support": "^10.0 || ^9.0 || ^8.0 || ^7.0"
     },
     "scripts": {
         "test": "vendor/bin/pest",
