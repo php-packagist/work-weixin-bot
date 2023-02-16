@@ -1,0 +1,31 @@
+{
+    "name": "php-packagist/work-weixin-bot",
+    "description": "企业微信机器人 SDK",
+    "type": "library",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "pestphp/pest": "^1.21"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PhpPackagist\\WorkWeixinBot\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "suggest": {
+        "illuminate/support": "^10.0|^9.0|^8.0|^7.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "cs-fix": "php-cs-fixer fix"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

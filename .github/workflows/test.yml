@@ -1,0 +1,26 @@
+name: Test
+on: [push, pull_request]
+
+env:
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+
+jobs:
+  pest:
+    name: PHP-${{ matrix.php_version }}-${{ matrix.perfer }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php_version:
+          - 7.4
+          - 8.0
+          - 8.1
+        perfer:
+          - stable
+          # - lowest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install Dependencies
+        run: composer update --prefer-dist --no-interaction --no-suggest --prefer-${{ matrix.perfer }}
+      - name: Run Test
+        run: composer test
