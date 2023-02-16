@@ -19,7 +19,7 @@ class ServiceProvider extends LaravelServiceProvider
     }
 
     /**
-     * Setup the config.
+     * Set up the config.
      *
      * @return void
      */
@@ -30,7 +30,7 @@ class ServiceProvider extends LaravelServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 $source => config_path('work-weixin-bot.php'),
-            ], 'config');
+            ], 'work-weixin-bot');
         }
 
         $this->mergeConfigFrom($source, 'work-weixin-bot');
