@@ -23,6 +23,16 @@
         "test": "vendor/bin/pest",
         "cs-fix": "php-cs-fixer fix"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PhpPackagist\\WorkWeixinBot\\Laravel\\ServiceProvider"
+            ],
+            "aliases": {
+                "WorkWeixinBot": "PhpPackagist\\WorkWeixinBot\\Laravel\\Facades\\WorkWeixinBot"
+            }
+        }
+    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
