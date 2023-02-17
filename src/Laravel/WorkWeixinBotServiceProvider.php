@@ -4,7 +4,7 @@ namespace PhpPackagist\WorkWeixinBot\Laravel;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class ServiceProvider extends LaravelServiceProvider
+class WorkWeixinBotServiceProvider extends LaravelServiceProvider
 {
     /**
      * Register the application services.
