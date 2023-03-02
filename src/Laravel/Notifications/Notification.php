@@ -4,6 +4,7 @@ namespace PhpPackagist\WorkWeixinBot\Laravel\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification as BaseNotification;
 use PhpPackagist\WorkWeixinBot\Laravel\Messages\Message;
 
@@ -32,7 +33,7 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return array
      */
-    public function via($notifiable): array
+    public function via(AnonymousNotifiable $notifiable): array
     {
         return ['work-wechat-bot'];
     }
@@ -52,9 +53,9 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @param mixed $notificable
      *
-     * @return mixed
+     * @return Message
      */
-    public function toWorkWechat($notificable)
+    public function toWorkWechat(AnonymousNotifiable $notificable): Message
     {
         return $this->message;
     }
@@ -66,7 +67,7 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return array
      */
-    public function toArray($notifiable): array
+    public function toArray(AnonymousNotifiable $notifiable): array
     {
         return [
             'via'     => 'work-wechat-bot',

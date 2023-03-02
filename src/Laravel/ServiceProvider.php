@@ -2,7 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Laravel;
 
+use Illuminate\Notifications\ChannelManager;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use PhpPackagist\WorkWeixinBot\Laravel\Channels\WorkWechatChannel;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -15,6 +17,10 @@ class ServiceProvider extends LaravelServiceProvider
 
         $this->app->singleton('work-weixin-bot', function () {
             return new Manager($this->app);
+        });
+
+        $this->app->make(ChannelManager::class)->extend('work-wechat-bot', function ($app) {
+            return $app->make(WorkWechatChannel::class);
         });
     }
 

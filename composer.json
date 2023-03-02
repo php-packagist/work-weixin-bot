@@ -1,10 +1,12 @@
 {
-    "name": "php-packagist/work-weixin-bot",
+    "name": "trigold/work-weixin-bot",
     "description": "企业微信机器人 SDK",
     "type": "library",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.14",
-        "pestphp/pest": "^1.21"
+        "pestphp/pest": "^1.21",
+        "barryvdh/laravel-ide-helper": "^2.10",
+        "pestphp/pest-plugin-laravel": "^1.4"
     },
     "license": "MIT",
     "autoload": {
@@ -15,7 +17,6 @@
     "require": {
         "php": ">=7.4",
         "guzzlehttp/guzzle": "^6.5 || ^7.5",
-        "laravel/framework": "^8.0",
         "ext-json": "*"
     },
     "suggest": {

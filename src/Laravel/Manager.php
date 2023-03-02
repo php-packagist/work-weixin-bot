@@ -3,7 +3,6 @@
 namespace PhpPackagist\WorkWeixinBot\Laravel;
 
 use Illuminate\Support\Manager as LaravelManager;
-use InvalidArgumentException;
 use PhpPackagist\WorkWeixinBot\Bot;
 
 class Manager extends LaravelManager
@@ -49,7 +48,7 @@ class Manager extends LaravelManager
         $config = $this->config->get('work-weixin-bot.drivers.'.$driver);
 
         if (is_null($config)) {
-            throw new InvalidArgumentException(sprintf('Unable to resolve NULL driver for [%s].', static::class));
+            throw new \InvalidArgumentException(sprintf('Unable to resolve NULL driver for [%s].', static::class));
         }
 
         return new Bot($config);
