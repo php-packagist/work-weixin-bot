@@ -14,8 +14,8 @@ class TextNotification extends Notification
      *
      * @return void
      */
-    public function __construct(string $message, string $app = 'default', $delay = null)
+    public function __construct(string $message, string $app = 'default')
     {
-        parent::__construct(new Text($message), $app, $delay);
+        parent::__construct(new Text($message), $app);
     }
 }
