@@ -12,7 +12,6 @@ class Notification extends BaseNotification implements ShouldQueue
 {
     use Queueable;
 
-    protected string $driver;
     protected Message $message;
 
     /**
@@ -20,10 +19,9 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Message $message, string $driver = 'default')
+    public function __construct(Message $message)
     {
         $this->message = $message;
-        $this->driver  = $driver;
     }
 
     /**
@@ -36,16 +34,6 @@ class Notification extends BaseNotification implements ShouldQueue
     public function via(AnonymousNotifiable $notifiable): array
     {
         return ['work-wechat-bot'];
-    }
-
-    /**
-     * Get the notification's delivery youdu app.
-     *
-     * @return string
-     */
-    public function driver(): string
-    {
-        return $this->driver;
     }
 
     /**

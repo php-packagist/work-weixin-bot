@@ -11,6 +11,8 @@ use PhpPackagist\WorkWeixinBot\Response;
 
 class WorkWechatChannel implements Channel
 {
+    const CHANNELS_NAME = 'work-wechat-bot';
+
     public function send(AnonymousNotifiable $notifiable, Notification $notification): bool|Response
     {
         if (! method_exists($notification, 'toWorkWechat')) {
@@ -19,7 +21,7 @@ class WorkWechatChannel implements Channel
 
         $messages = $notification->toWorkWechat($notifiable);
 
-        if (! ($bot = $notifiable->routeNotificationFor('work-wechat-bot'))) {
+        if (! ($bot = $notifiable->routeNotificationFor(self::CHANNELS_NAME))) {
             return false;
         }
 

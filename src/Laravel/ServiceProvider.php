@@ -19,7 +19,7 @@ class ServiceProvider extends LaravelServiceProvider
             return new Manager($this->app);
         });
 
-        $this->app->make(ChannelManager::class)->extend('work-wechat-bot', function ($app) {
+        $this->app->make(ChannelManager::class)->extend(WorkWechatChannel::CHANNELS_NAME, function ($app) {
             return $app->make(WorkWechatChannel::class);
         });
     }
