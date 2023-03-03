@@ -1,5 +1,5 @@
 {
-    "name": "trigold/work-weixin-bot",
+    "name": "php-packagist/work-weixin-bot",
     "description": "企业微信机器人 SDK",
     "type": "library",
     "require-dev": {

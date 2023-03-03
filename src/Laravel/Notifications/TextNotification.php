@@ -7,8 +7,6 @@ use PhpPackagist\WorkWeixinBot\Laravel\Messages\Text;
 
 class TextNotification extends Notification
 {
-    protected Message $message;
-
     /**
      * Create a new notification instance.
      *

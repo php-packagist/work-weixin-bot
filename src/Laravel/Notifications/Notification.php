@@ -59,7 +59,6 @@ class Notification extends BaseNotification implements ShouldQueue
     {
         return [
             'via'     => 'work-wechat-bot',
-            'driver'  => $this->driver,
             'message' => $this->message->toArray(),
         ];
     }
