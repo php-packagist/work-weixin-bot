@@ -13,7 +13,7 @@ class WorkWechatChannel implements Channel
 {
     const CHANNELS_NAME = 'work-wechat-bot';
 
-    public function send(AnonymousNotifiable $notifiable, Notification $notification): bool|Response
+    public function send($notifiable, Notification $notification)
     {
         if (! method_exists($notification, 'toWorkWechat')) {
             return false;

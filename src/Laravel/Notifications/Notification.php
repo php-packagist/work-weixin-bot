@@ -31,7 +31,7 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return array
      */
-    public function via(AnonymousNotifiable $notifiable): array
+    public function via($notifiable): array
     {
         return ['work-wechat-bot'];
     }
@@ -43,7 +43,7 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return Message
      */
-    public function toWorkWechat(AnonymousNotifiable $notificable): Message
+    public function toWorkWechat($notificable): Message
     {
         return $this->message;
     }
@@ -55,7 +55,7 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @return array
      */
-    public function toArray(AnonymousNotifiable $notifiable): array
+    public function toArray($notifiable): array
     {
         return [
             'via'     => 'work-wechat-bot',
