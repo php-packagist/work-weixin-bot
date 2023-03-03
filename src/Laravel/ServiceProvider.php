@@ -2,7 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Laravel;
 
+use Illuminate\Log\LogManager;
 use Illuminate\Notifications\ChannelManager;
+use PhpPackagist\WorkWeixinBot\Laravel\Handler\LogHandler;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use PhpPackagist\WorkWeixinBot\Laravel\Channels\WorkWechatChannel;
 
@@ -19,7 +21,8 @@ class ServiceProvider extends LaravelServiceProvider
             return new Manager($this->app);
         });
 
-        $this->app->make(ChannelManager::class)->extend(WorkWechatChannel::CHANNELS_NAME, function ($app) {
+        $this->app->make(ChannelManager::class)
+            ->extend(WorkWechatChannel::CHANNELS_NAME, function ($app) {
             return $app->make(WorkWechatChannel::class);
         });
     }
