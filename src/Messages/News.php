@@ -2,7 +2,7 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Messages\News\Articles;
+use PhpPackagist\WorkWeixinBot\Messages\News\Article;
 
 /**
  * News Message body
@@ -10,14 +10,14 @@ use PhpPackagist\WorkWeixinBot\Messages\News\Articles;
 class News extends Message
 {
     /**
-     * Articles Class array.
+     * Article Class array.
      *
      * @var array
      */
     protected array $articles;
 
     /**
-     * articles item mast be PhpPackagist\WorkWeixinBot\Messages\News\Articles Class.
+     * articles item mast be PhpPackagist\WorkWeixinBot\Messages\News\Article Class.
      *
      * @param  array  $articles
      */
@@ -44,8 +44,8 @@ class News extends Message
     {
         $articles = [];
         foreach ($this->articles as $article) {
-            if (!$article instanceof Articles) {
-                throw new \InvalidArgumentException('articles mast be Articles Class.');
+            if (!$article instanceof Article) {
+                throw new \InvalidArgumentException('articles mast be Article Class.');
             }
             $articles[] = $article->toArray();
         }
@@ -55,11 +55,11 @@ class News extends Message
     /**
      * add articles item
      *
-     * @param  Articles  $articles
+     * @param  Article  $articles
      *
      * @return News
      */
-    public function addArticles(Articles $articles): News
+    public function addArticles(Article $articles): News
     {
         $this->articles[] = $articles;
         return $this;
@@ -71,16 +71,5 @@ class News extends Message
     public function getArticles(): array
     {
         return $this->articles;
-    }
-
-    /**
-     * @param  array  $articles
-     *
-     * @return News
-     */
-    public function setArticles(array $articles): News
-    {
-        $this->articles = $articles;
-        return $this;
     }
 }

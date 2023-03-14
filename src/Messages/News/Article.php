@@ -7,7 +7,7 @@ use PhpPackagist\WorkWeixinBot\Messages\Message;
 /**
  * News Message articles item class
  */
-class Articles extends Message
+class Article extends Message
 {
     // title
     protected string $title;
@@ -53,9 +53,9 @@ class Articles extends Message
     /**
      * @param  string  $title
      *
-     * @return Articles
+     * @return Article
      */
-    public function setTitle(string $title): Articles
+    public function setTitle(string $title): Article
     {
         $this->title = $title;
         return $this;
@@ -72,9 +72,9 @@ class Articles extends Message
     /**
      * @param  string  $description
      *
-     * @return Articles
+     * @return Article
      */
-    public function setDescription(string $description): Articles
+    public function setDescription(string $description): Article
     {
         $this->description = $description;
         return $this;
@@ -91,9 +91,9 @@ class Articles extends Message
     /**
      * @param  string  $url
      *
-     * @return Articles
+     * @return Article
      */
-    public function setUrl(string $url): Articles
+    public function setUrl(string $url): Article
     {
         $this->url = $url;
         return $this;
@@ -110,9 +110,9 @@ class Articles extends Message
     /**
      * @param  string  $picurl
      *
-     * @return Articles
+     * @return Article
      */
-    public function setPicurl(string $picurl): Articles
+    public function setPicurl(string $picurl): Article
     {
         $this->picurl = $picurl;
         return $this;
