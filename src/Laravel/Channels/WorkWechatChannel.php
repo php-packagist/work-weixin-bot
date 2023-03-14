@@ -3,11 +3,9 @@
 namespace PhpPackagist\WorkWeixinBot\Laravel\Channels;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 use PhpPackagist\WorkWeixinBot\Laravel\Contracts\Channel;
 use PhpPackagist\WorkWeixinBot\Laravel\Facades\WorkWeixinBot;
-use PhpPackagist\WorkWeixinBot\Response;
 
 class WorkWechatChannel implements Channel
 {

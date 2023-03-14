@@ -4,9 +4,8 @@ namespace PhpPackagist\WorkWeixinBot\Laravel\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\AnonymousNotifiable;
+use PhpPackagist\WorkWeixinBot\Messages\Message;
 use Illuminate\Notifications\Notification as BaseNotification;
-use PhpPackagist\WorkWeixinBot\Laravel\Messages\Message;
 
 class Notification extends BaseNotification implements ShouldQueue
 {

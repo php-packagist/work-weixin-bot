@@ -2,14 +2,12 @@
 
 namespace PhpPackagist\WorkWeixinBot\Laravel\Notifications;
 
-use PhpPackagist\WorkWeixinBot\Laravel\Messages\Image;
+use PhpPackagist\WorkWeixinBot\Messages\Image;
 
 class ImageNotification extends Notification
 {
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * Create a new image notification instance.
      */
     public function __construct(string $file)
     {

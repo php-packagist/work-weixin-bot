@@ -2,8 +2,7 @@
 
 namespace PhpPackagist\WorkWeixinBot\Laravel\Notifications;
 
-use PhpPackagist\WorkWeixinBot\Laravel\Messages\Message;
-use PhpPackagist\WorkWeixinBot\Laravel\Messages\Text;
+use PhpPackagist\WorkWeixinBot\Messages\Text;
 
 class TextNotification extends Notification
 {
@@ -12,8 +11,8 @@ class TextNotification extends Notification
      *
      * @return void
      */
-    public function __construct(string $message)
+    public function __construct(string $message, array $mentionedMobileList = [], array $mentionedList = [])
     {
-        parent::__construct(new Text($message));
+        parent::__construct(new Text($message, $mentionedMobileList, $mentionedList));
     }
 }

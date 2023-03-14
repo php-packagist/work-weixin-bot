@@ -2,9 +2,7 @@
 
 namespace PhpPackagist\WorkWeixinBot\Laravel;
 
-use Illuminate\Log\LogManager;
 use Illuminate\Notifications\ChannelManager;
-use PhpPackagist\WorkWeixinBot\Laravel\Handler\LogHandler;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use PhpPackagist\WorkWeixinBot\Laravel\Channels\WorkWechatChannel;
 

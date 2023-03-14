@@ -1,13 +1,13 @@
 <?php
 
-namespace PhpPackagist\WorkWeixinBot\Laravel\Messages;
+namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
 
 abstract class Message implements Arrayable, Jsonable, \JsonSerializable
 {
-    public function toJson($options = JSON_UNESCAPED_UNICODE): bool|string
+    public function toJson($options = JSON_UNESCAPED_UNICODE): string
     {
         return json_encode($this->jsonSerialize(), $options);
     }
