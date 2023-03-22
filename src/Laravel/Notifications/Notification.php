@@ -4,22 +4,22 @@ namespace PhpPackagist\WorkWeixinBot\Laravel\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use PhpPackagist\WorkWeixinBot\Messages\Message;
 use Illuminate\Notifications\Notification as BaseNotification;
 use PhpPackagist\WorkWeixinBot\Laravel\Channels\WorkWeixinChannel;
+use PhpPackagist\WorkWeixinBot\Messages\AbstractMessage;
 
 class Notification extends BaseNotification implements ShouldQueue
 {
     use Queueable;
 
-    protected Message $message;
+    protected AbstractMessage $message;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(AbstractMessage $message)
     {
         $this->message = $message;
     }
@@ -41,9 +41,9 @@ class Notification extends BaseNotification implements ShouldQueue
      *
      * @param mixed $notificable
      *
-     * @return Message
+     * @return AbstractMessage
      */
-    public function toWorkWechat($notificable): Message
+    public function toWorkWechat($notificable): AbstractMessage
     {
         return $this->message;
     }

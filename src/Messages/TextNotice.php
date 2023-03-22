@@ -2,15 +2,14 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
-use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
-use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\EmphasisContent;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
 
-class TextNotice extends Message
+class TextNotice extends AbstractMessage
 {
-
     protected Source $source;
 
     protected MainTitle $mainTitle;
@@ -37,14 +36,14 @@ class TextNotice extends Message
         array $horizontalContentList = [],
         array $jumpList = []
     ) {
-        $this->source = $source ?? new Source();
-        $this->mainTitle = $mainTitle ?? new MainTitle();
-        $this->emphasisContent = $emphasisContent ?? new EmphasisContent();
-        $this->quoteArea = $quoteArea ?? new QuoteArea();
-        $this->subTitleText = $subTitleText;
+        $this->source                = $source          ?? new Source();
+        $this->mainTitle             = $mainTitle       ?? new MainTitle();
+        $this->emphasisContent       = $emphasisContent ?? new EmphasisContent();
+        $this->quoteArea             = $quoteArea       ?? new QuoteArea();
+        $this->subTitleText          = $subTitleText;
         $this->horizontalContentList = $horizontalContentList;
-        $this->jumpList = $jumpList;
-        $this->cardAction = $cardAction ?? new CardAction();
+        $this->jumpList              = $jumpList;
+        $this->cardAction            = $cardAction ?? new CardAction();
     }
 
     /**
@@ -77,7 +76,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  Source  $source
+     * @param Source $source
      *
      * @return TextNotice
      */
@@ -96,7 +95,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  MainTitle  $mainTitle
+     * @param MainTitle $mainTitle
      *
      * @return TextNotice
      */
@@ -115,7 +114,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  EmphasisContent  $emphasisContent
+     * @param EmphasisContent $emphasisContent
      *
      * @return TextNotice
      */
@@ -134,7 +133,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  QuoteArea  $quoteArea
+     * @param QuoteArea $quoteArea
      *
      * @return TextNotice
      */
@@ -153,7 +152,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  string  $subTitleText
+     * @param string $subTitleText
      *
      * @return TextNotice
      */
@@ -172,7 +171,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  array  $horizontalContentList
+     * @param array $horizontalContentList
      *
      * @return TextNotice
      */
@@ -191,7 +190,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  array  $jumpList
+     * @param array $jumpList
      *
      * @return TextNotice
      */
@@ -210,7 +209,7 @@ class TextNotice extends Message
     }
 
     /**
-     * @param  CardAction  $cardAction
+     * @param CardAction $cardAction
      *
      * @return TextNotice
      */

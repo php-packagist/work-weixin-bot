@@ -5,7 +5,7 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 /**
  * Text Message body.
  */
-class Text extends Message
+class Text extends AbstractMessage implements MessageInterface
 {
     // message content
     protected string $content;
@@ -20,8 +20,8 @@ class Text extends Message
 
     public function __construct(string $content = '', array $mentioned_list = [], array $mentioned_mobile_list = [])
     {
-        $this->content = $content;
-        $this->mentioned_list = $mentioned_list;
+        $this->content               = $content;
+        $this->mentioned_list        = $mentioned_list;
         $this->mentioned_mobile_list = $mentioned_mobile_list;
     }
 
@@ -30,8 +30,8 @@ class Text extends Message
         return [
             'msgtype' => 'text',
             'text'    => [
-                'content' => $this->content,
-                'mentioned_list' => $this->mentioned_list,
+                'content'               => $this->content,
+                'mentioned_list'        => $this->mentioned_list,
                 'mentioned_mobile_list' => $this->mentioned_mobile_list,
             ],
         ];
@@ -46,7 +46,7 @@ class Text extends Message
     }
 
     /**
-     * @param  string  $content
+     * @param string $content
      *
      * @return Text
      */
@@ -65,7 +65,7 @@ class Text extends Message
     }
 
     /**
-     * @param  array  $mentioned_list
+     * @param array $mentioned_list
      *
      * @return Text
      */
@@ -84,7 +84,7 @@ class Text extends Message
     }
 
     /**
-     * @param  array  $mentioned_mobile_list
+     * @param array $mentioned_mobile_list
      *
      * @return Text
      */
@@ -93,6 +93,4 @@ class Text extends Message
         $this->mentioned_mobile_list = $mentioned_mobile_list;
         return $this;
     }
-
-
 }

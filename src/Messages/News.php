@@ -7,7 +7,7 @@ use PhpPackagist\WorkWeixinBot\Messages\News\Article;
 /**
  * News Message body
  */
-class News extends Message
+class News extends AbstractMessage
 {
     /**
      * Article Class array.
@@ -19,7 +19,7 @@ class News extends Message
     /**
      * articles item mast be PhpPackagist\WorkWeixinBot\Messages\News\Article Class.
      *
-     * @param  array  $articles
+     * @param array $articles
      */
     public function __construct(array $articles = [])
     {
@@ -44,7 +44,7 @@ class News extends Message
     {
         $articles = [];
         foreach ($this->articles as $article) {
-            if (!$article instanceof Article) {
+            if (! $article instanceof Article) {
                 throw new \InvalidArgumentException('articles mast be Article Class.');
             }
             $articles[] = $article->toArray();
@@ -55,7 +55,7 @@ class News extends Message
     /**
      * add articles item
      *
-     * @param  Article  $articles
+     * @param Article $articles
      *
      * @return News
      */

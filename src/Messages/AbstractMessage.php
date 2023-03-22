@@ -2,10 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 
-abstract class Message implements Arrayable, Jsonable, \JsonSerializable
+abstract class AbstractMessage implements MessageInterface, Arrayable, Jsonable, \JsonSerializable
 {
     public function toJson($options = JSON_UNESCAPED_UNICODE): string
     {

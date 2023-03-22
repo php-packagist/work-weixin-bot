@@ -5,26 +5,28 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 /**
  * Image Message body.
  */
-class Image extends Message
+class Image extends AbstractMessage
 {
-
     /**
      * file path or url
+     *
      * @var string
+     *
      * @example https://www.baidu.com/img/bd_logo1.png
      *          /Users/xxx/Downloads/bd_logo1.png
-     *
      */
     protected string $file;
 
     /**
      * md5 of file
+     *
      * @var string
      */
     protected string $md5;
 
     /**
      * base64 of file
+     *
      * @var string
      */
     protected string $base64;
@@ -52,9 +54,9 @@ class Image extends Message
     {
         if (filter_var($this->file, FILTER_VALIDATE_URL)) {
             $contextOptions = stream_context_create([
-                "ssl" => [
-                    "verify_peer"      => false,
-                    "verify_peer_name" => false,
+                'ssl' => [
+                    'verify_peer'      => false,
+                    'verify_peer_name' => false,
                 ],
             ]);
             $fileContent = file_get_contents($this->file, false, $contextOptions);
@@ -63,7 +65,7 @@ class Image extends Message
         }
 
         $this->base64 = base64_encode($fileContent);
-        $this->md5 = md5_file($this->file);
+        $this->md5    = md5_file($this->file);
     }
 
     /**
@@ -75,7 +77,7 @@ class Image extends Message
     }
 
     /**
-     * @param  string  $file
+     * @param string $file
      *
      * @return Image
      */
@@ -101,5 +103,4 @@ class Image extends Message
     {
         return $this->base64;
     }
-
 }

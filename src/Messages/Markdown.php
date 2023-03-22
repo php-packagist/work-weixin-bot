@@ -5,12 +5,13 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 /**
  * markdown Message body.
  */
-class Markdown extends Message
+class Markdown extends AbstractMessage
 {
     /**
      * markdown message content
      *
      * @var string
+     *
      * @example # title 1
      *          ## title 2
      *          ### title 3
@@ -21,7 +22,6 @@ class Markdown extends Message
      *          [it's a link](https://www.baidu.com)
      *          `code`
      *          > quote
-     *
      */
     protected string $content;
 
@@ -49,7 +49,7 @@ class Markdown extends Message
     }
 
     /**
-     * @param  string  $content
+     * @param string $content
      *
      * @return Markdown
      */
@@ -58,5 +58,4 @@ class Markdown extends Message
         $this->content = $content;
         return $this;
     }
-
 }

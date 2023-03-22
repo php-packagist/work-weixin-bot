@@ -3,10 +3,10 @@
 namespace PhpPackagist\WorkWeixinBot\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use PhpPackagist\WorkWeixinBot\Messages\AbstractMessage;
 
 /**
- * @method static \PhpPackagist\WorkWeixinBot\Response send(Message $message)
+ * @method static \PhpPackagist\WorkWeixinBot\Response send(AbstractMessage $message)
  * @method static \PhpPackagist\WorkWeixinBot\Response upload(string $file_path)
  * @method static \PhpPackagist\WorkWeixinBot\Bot      driver(string $driver = null)
  */

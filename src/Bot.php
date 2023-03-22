@@ -3,9 +3,10 @@
 namespace PhpPackagist\WorkWeixinBot;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
 use GuzzleHttp\ClientInterface;
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\RequestOptions;
+use PhpPackagist\WorkWeixinBot\Messages\MessageInterface;
 
 class Bot
 {
@@ -32,8 +33,8 @@ class Bot
     ];
 
     /**
-     * @param  array            $config
-     * @param ?ClientInterface  $client
+     * @param array            $config
+     * @param ?ClientInterface $client
      */
     public function __construct(array $config = [], ?ClientInterface $client = null)
     {
@@ -41,28 +42,46 @@ class Bot
         $this->client = $client ?? new Client();
     }
 
-    // send message
-    public function send(Message $message): Response
+    /**
+     * Send message.
+     *
+     * @param MessageInterface $message
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function send(MessageInterface $message): Response
     {
-        $url = sprintf(self::API_SEND, $this->config['key']);
-        $response = $this->client->request('POST', $url, [
+        $response = $this->client->request('POST',
+            sprintf(self::API_SEND, $this->config['key']), [
             RequestOptions::JSON => $message->toArray(),
         ]);
+
         return new Response($response);
     }
 
-    // upload file
+    /**
+     * Upload file.
+     *
+     * @param string $file_path
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
     public function upload(string $file_path): Response
     {
-        $url = sprintf(self::API_UPLOAD, $this->config['key']);
-        $response = $this->client->request('POST', $url, [
+        $response = $this->client->request('POST',
+            sprintf(self::API_UPLOAD, $this->config['key']), [
             RequestOptions::MULTIPART => [
                 [
-                    'name'=>'media',
-                    'contents'=> fopen($file_path, 'r'),
-                ]
+                    'name'     => 'media',
+                    'contents' => fopen($file_path, 'r'),
+                ],
             ],
         ]);
+
         return new Response($response);
     }
 }
