@@ -81,11 +81,17 @@ use PhpPackagist\WorkWeixinBot\Laravel\Notifications\MarkdownNotification;
 use PhpPackagist\WorkWeixinBot\Laravel\Notifications\ImageNotification;
 use PhpPackagist\WorkWeixinBot\Laravel\Notifications\FileNotification;
 
+// 文本发送
 Notification::send(Notification::route('work-wechat-bot', 'default'), new TextNotification('测试文本消息'));
+// markdown发送
 Notification::send(Notification::route('work-wechat-bot', 'default'), new MarkdownNotification('# 测试markdown消息'));
+// 图片发送
 Notification::send(Notification::route('work-wechat-bot', 'default'), new ImageNotification('IMAGE_PATH'));
+// 文件发送
 Notification::send(Notification::route('work-wechat-bot', 'default'), new FileNotification('MEDIA_ID'));
-
+// 图文发送
+$articleArray = [new Article('test','test','URL','IMAGE_URL')];
+Notification::send(Notification::route('work-weixin-bot', 'default'), new NewsNotification($articleArray));
 // 如果想发给多个机器人
 collect(['default','other'])
     ->transform(function ($route) {
@@ -95,3 +101,4 @@ collect(['default','other'])
         Notification::send($notifiables, new TextNotification($message));
     });
 ```
+>未完待续...
