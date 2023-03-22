@@ -64,6 +64,11 @@ WorkWeixinBot::send(new Markdown('测试markdown消息',['@all'],['@all']));
 WorkWeixinBot::send(new Image('IMAGE_PATH'));
 //发送新闻
 WorkWeixinBot::send(new News([new Article('测试新闻标题','测试新闻描述','URL','IMAGE_URL')])));
+//发送文件 (文件需要先上传到企业微信服务器,获取media_id,然后再发送)
+WorkWeixinBot::send(new File('MEDIA_ID')));
+//上传文件
+WorkWeixinBot::upload('FILE_PATH');
+
 //你也可以使用另外的机器人配置,你只需要
 WorkWeixinBot::derive('other');
 ```
