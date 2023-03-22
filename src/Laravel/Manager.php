@@ -9,6 +9,16 @@ use PhpPackagist\WorkWeixinBot\Bot;
 class Manager extends LaravelManager
 {
     /**
+     * @param $name
+     *
+     * @return Bot
+     */
+    public function channel($name = null): Bot
+    {
+        return $this->driver($name);
+    }
+
+    /**
      * Create a new driver instance.
      *
      * @param string $driver
