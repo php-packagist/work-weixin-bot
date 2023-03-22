@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use PhpPackagist\WorkWeixinBot\Messages\Message;
 use Illuminate\Notifications\Notification as BaseNotification;
+use PhpPackagist\WorkWeixinBot\Laravel\Channels\WorkWeixinChannel;
 
 class Notification extends BaseNotification implements ShouldQueue
 {
@@ -32,7 +33,7 @@ class Notification extends BaseNotification implements ShouldQueue
      */
     public function via($notifiable): array
     {
-        return ['work-wechat-bot'];
+        return [WorkWeixinChannel::CHANNELS_NAME];
     }
 
     /**
@@ -57,7 +58,7 @@ class Notification extends BaseNotification implements ShouldQueue
     public function toArray($notifiable): array
     {
         return [
-            'via'     => 'work-wechat-bot',
+            'via'     => WorkWeixinChannel::CHANNELS_NAME,
             'message' => $this->message->toArray(),
         ];
     }

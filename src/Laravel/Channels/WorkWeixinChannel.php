@@ -7,9 +7,9 @@ use Illuminate\Notifications\Notification;
 use PhpPackagist\WorkWeixinBot\Laravel\Contracts\Channel;
 use PhpPackagist\WorkWeixinBot\Laravel\Facades\WorkWeixinBot;
 
-class WorkWechatChannel implements Channel
+class WorkWeixinChannel implements Channel
 {
-    const CHANNELS_NAME = 'work-wechat-bot';
+    const CHANNELS_NAME = 'work-weixin-bot';
 
     public function send($notifiable, Notification $notification)
     {
