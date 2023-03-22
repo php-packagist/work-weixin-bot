@@ -4,12 +4,17 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 
 class File extends AbstractMessage
 {
-    // file id
+    /**
+     * @var string
+     */
     protected string $media_id;
 
+    /**
+     * @param string $media_id
+     */
     public function __construct(string $media_id = '')
     {
-        $this->media_id = $media_id;
+        $this->setMediaId($media_id);
     }
 
     /**
@@ -38,9 +43,10 @@ class File extends AbstractMessage
      *
      * @return File
      */
-    public function setMediaId(string $media_id): File
+    public function setMediaId(string $media_id): self
     {
         $this->media_id = $media_id;
+
         return $this;
     }
 }

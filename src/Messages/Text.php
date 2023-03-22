@@ -2,29 +2,40 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-/**
- * Text Message body.
- */
 class Text extends AbstractMessage implements MessageInterface
 {
-    // message content
+    /**
+     * @var string
+     */
     protected string $content;
 
-    // if you @ someone, you can use this property to set the mentioned list
-    // if you want to @all, you can set this property to ['@all']
+    /**
+     * @var array if you @all or @someone, you can use this property to set the mentioned list
+     */
     protected array $mentioned_list = [];
 
-    // if you @ someone, you can use this property to set the mentioned mobile list
-    // if you want to @all, you can set this property to ['@all']
+    /**
+     * @var array if you @all or @someone, you can use this property to set the mentioned mobile list
+     */
     protected array $mentioned_mobile_list = [];
 
+    /**
+     * Text constructor.
+     *
+     * @param string $content
+     * @param array  $mentioned_list
+     * @param array  $mentioned_mobile_list
+     */
     public function __construct(string $content = '', array $mentioned_list = [], array $mentioned_mobile_list = [])
     {
-        $this->content               = $content;
-        $this->mentioned_list        = $mentioned_list;
-        $this->mentioned_mobile_list = $mentioned_mobile_list;
+        $this->setContent($content);
+        $this->setMentionedList($mentioned_list);
+        $this->setMentionedMobileList($mentioned_mobile_list);
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
@@ -53,6 +64,7 @@ class Text extends AbstractMessage implements MessageInterface
     public function setContent(string $content): Text
     {
         $this->content = $content;
+
         return $this;
     }
 
@@ -72,6 +84,7 @@ class Text extends AbstractMessage implements MessageInterface
     public function setMentionedList(array $mentioned_list): Text
     {
         $this->mentioned_list = $mentioned_list;
+
         return $this;
     }
 
@@ -88,9 +101,10 @@ class Text extends AbstractMessage implements MessageInterface
      *
      * @return Text
      */
-    public function setMentionedMobileList(array $mentioned_mobile_list): Text
+    public function setMentionedMobileList(array $mentioned_mobile_list): self
     {
         $this->mentioned_mobile_list = $mentioned_mobile_list;
+
         return $this;
     }
 }

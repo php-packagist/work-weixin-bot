@@ -4,9 +4,7 @@
     "type": "library",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.14",
-        "pestphp/pest": "^1.21",
-        "barryvdh/laravel-ide-helper": "^2.10",
-        "pestphp/pest-plugin-laravel": "^1.4"
+        "pestphp/pest": "^1.21"
     },
     "license": "MIT",
     "autoload": {
@@ -19,22 +17,9 @@
         "guzzlehttp/guzzle": "^6.5 || ^7.5",
         "ext-json": "*"
     },
-    "suggest": {
-        "illuminate/support": "^10.0 || ^9.0 || ^8.0 || ^7.0"
-    },
     "scripts": {
         "test": "vendor/bin/pest",
         "cs-fix": "php-cs-fixer fix"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "PhpPackagist\\WorkWeixinBot\\Laravel\\ServiceProvider"
-            ],
-            "aliases": {
-                "WorkWeixinBot": "PhpPackagist\\WorkWeixinBot\\Laravel\\Facades\\WorkWeixinBot"
-            }
-        }
     },
     "config": {
         "allow-plugins": {
