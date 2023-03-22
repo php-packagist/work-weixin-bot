@@ -33,6 +33,20 @@ $bot->send(new News([new Article('测试新闻标题','测试新闻描述','URL'
 ### 首先你需要发布配置
 ```` php artisan vendor:publish --provider="PhpPackagist\WorkWeixinBot\Laravel\ServiceProvider"````
 >执行后会在config目录下生成work-wechat-bot.php文件
+
+### 配置
+```php
+return [
+    // 默认使用的机器人配置
+    'default' => 'default',
+    // 机器人配置
+    'drivers' => [
+        'default' => [
+            'key' => env('WORK_WEIXIN_BOT_KEY', ''),
+        ],
+];
+
+````
 ### Facades
 ```php
 use PhpPackagist\WorkWeixinBot\Messages\Text;
@@ -50,17 +64,29 @@ WorkWeixinBot::send(new Markdown('测试markdown消息',['@all'],['@all']));
 WorkWeixinBot::send(new Image('IMAGE_PATH'));
 //发送新闻
 WorkWeixinBot::send(new News([new Article('测试新闻标题','测试新闻描述','URL','IMAGE_URL')])));
-```
-
->你也可以使用另外的机器人配置,你只需要
-```php
+//你也可以使用另外的机器人配置,你只需要
 WorkWeixinBot::derive('other');
 ```
 
 ### Notification
 ```php
 use Illuminate\Support\Facades\Notification;
-use PhpPackagist\WorkWeixinBot\Messages\TextNotice;
+use PhpPackagist\WorkWeixinBot\Laravel\Notifications\TextNotification;
+use PhpPackagist\WorkWeixinBot\Laravel\Notifications\MarkdownNotification;
+use PhpPackagist\WorkWeixinBot\Laravel\Notifications\ImageNotification;
+use PhpPackagist\WorkWeixinBot\Laravel\Notifications\FileNotification;
 
 Notification::send(Notification::route('work-wechat-bot', 'default'), new TextNotification('测试文本消息'));
+Notification::send(Notification::route('work-wechat-bot', 'default'), new MarkdownNotification('# 测试markdown消息'));
+Notification::send(Notification::route('work-wechat-bot', 'default'), new ImageNotification('IMAGE_PATH'));
+Notification::send(Notification::route('work-wechat-bot', 'default'), new FileNotification('MEDIA_ID'));
+
+// 如果想发给多个机器人
+collect(['default','other'])
+    ->transform(function ($route) {
+        return  Notification::route('work-wechat-bot', $route);
+    })
+    ->tap(function (Collection $notifiables) use ($message) {
+        Notification::send($notifiables, new TextNotification($message));
+    });
 ```
