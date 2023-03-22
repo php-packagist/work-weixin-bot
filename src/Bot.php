@@ -5,6 +5,7 @@ namespace PhpPackagist\WorkWeixinBot;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use PhpPackagist\WorkWeixinBot\Messages\Message;
 
 class Bot
 {
@@ -35,115 +36,12 @@ class Bot
         $this->client = $client ?? new Client();
     }
 
-    /**
-     * send text message.
-     *
-     * @param string $content
-     * @param array  $mentionedMobileList
-     * @param array  $mentionedUseridList
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendText(string $content, array $mentionedMobileList = [], array $mentionedUseridList = []): Response
-    {
-        $data = [
-            'msgtype' => 'text',
-            'text'    => [
-                'content'               => $content,
-                'mentioned_mobile_list' => $mentionedMobileList,
-                'mentioned_userid_list' => $mentionedUseridList,
-            ],
-        ];
-
-        return $this->sendRaw($data);
-    }
-
-    /**
-     * send markdown message.
-     *
-     * @param string $content
-     * @param array  $mentionedMobileList
-     * @param array  $mentionedUseridList
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendMarkdown(string $content, array $mentionedMobileList = [], array $mentionedUseridList = []): Response
-    {
-        $data = [
-            'msgtype'  => 'markdown',
-            'markdown' => [
-                'content'               => $content,
-                'mentioned_mobile_list' => $mentionedMobileList,
-                'mentioned_userid_list' => $mentionedUseridList,
-            ],
-        ];
-
-        return $this->sendRaw($data);
-    }
-
-    /**
-     * send image message.
-     *
-     * @param string $base64
-     * @param string $md5
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendImage(string $base64, string $md5): Response
-    {
-        $data = [
-            'msgtype' => 'image',
-            'image'   => [
-                'base64' => $base64,
-                'md5'    => $md5,
-            ],
-        ];
-
-        return $this->sendRaw($data);
-    }
-
-    /**
-     * @param array $articles
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendNews(array $articles): Response
-    {
-        $data = [
-            'msgtype' => 'news',
-            'news'    => [
-                'articles' => $articles,
-            ],
-        ];
-
-        return $this->sendRaw($data);
-    }
-
-    /**
-     * send raw message.
-     *
-     * @param array $params
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendRaw(array $params = []): Response
+    public function send(Message $message): Response
     {
         $url = sprintf(self::API_SEND, $this->config['key']);
-
         $response = $this->client->request('POST', $url, [
-            'json' => $params,
+            'json' => $message->toArray(),
         ]);
-
         return new Response($response);
     }
 }

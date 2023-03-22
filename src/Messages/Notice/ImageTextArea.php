@@ -2,9 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
 
-class ImageTextArea extends Message
+class ImageTextArea extends SubMessage
 {
     /**
      * @return array

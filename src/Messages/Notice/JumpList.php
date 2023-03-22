@@ -2,9 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
 
-class JumpList extends Message
+class JumpList extends SubMessage
 {
 
     /**

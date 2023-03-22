@@ -2,12 +2,12 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\News;
 
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
 
 /**
  * News Message articles item class
  */
-class Article extends Message
+class Article extends SubMessage
 {
     // title
     protected string $title;

@@ -2,9 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Messages\Message;
+use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
 
-class EmphasisContent extends Message
+class EmphasisContent extends SubMessage
 {
     /**
      * @return array
