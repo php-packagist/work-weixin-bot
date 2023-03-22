@@ -24,7 +24,7 @@ class WorkWechatChannel implements Channel
         }
 
         try {
-            return WorkWeixinBot::driver($bot)->sendRaw($messages->toArray());
+            return WorkWeixinBot::driver($bot)->send($messages);
         } catch (GuzzleException $e) {
             return false;
         }

@@ -82,6 +82,7 @@ class Image extends Message
     public function setFile(string $file): Image
     {
         $this->file = $file;
+        $this->initFile();
         return $this;
     }
 
@@ -94,34 +95,11 @@ class Image extends Message
     }
 
     /**
-     * @param  string  $md5
-     *
-     * @return Image
-     */
-    public function setMd5(string $md5): Image
-    {
-        $this->md5 = $md5;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getBase64(): string
     {
         return $this->base64;
     }
-
-    /**
-     * @param  string  $base64
-     *
-     * @return Image
-     */
-    public function setBase64(string $base64): Image
-    {
-        $this->base64 = $base64;
-        return $this;
-    }
-
 
 }
