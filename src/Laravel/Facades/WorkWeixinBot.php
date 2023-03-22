@@ -7,6 +7,7 @@ use PhpPackagist\WorkWeixinBot\Messages\Message;
 
 /**
  * @method static \PhpPackagist\WorkWeixinBot\Response send(Message $message)
+ * @method static \PhpPackagist\WorkWeixinBot\Response upload(string $file_path)
  * @method static \PhpPackagist\WorkWeixinBot\Bot      driver(string $driver = null)
  */
 class WorkWeixinBot extends Facade
