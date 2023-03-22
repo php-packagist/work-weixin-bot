@@ -7,6 +7,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use PhpPackagist\WorkWeixinBot\Messages\MessageInterface;
+use PhpPackagist\WorkWeixinBot\Messages\Text;
 
 class Bot
 {
@@ -59,6 +60,22 @@ class Bot
         ]);
 
         return new Response($response);
+    }
+
+    /**
+     * Send Text Message.
+     *
+     * @param string $content
+     * @param array  $mentioned_list
+     * @param array  $mentioned_mobile_list
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function sendText(string $content, array $mentioned_list = [], array $mentioned_mobile_list = []): Response
+    {
+        return $this->send(new Text($content, $mentioned_list, $mentioned_mobile_list));
     }
 
     /**
