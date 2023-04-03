@@ -2,7 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-class Text extends AbstractMessage implements MessageInterface
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
+
+class Text extends AbstractMessage
 {
     /**
      * @var string

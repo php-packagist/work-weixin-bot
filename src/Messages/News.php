@@ -3,6 +3,7 @@
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
 use PhpPackagist\WorkWeixinBot\Messages\News\Article;
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
 
 /**
  * News Message body

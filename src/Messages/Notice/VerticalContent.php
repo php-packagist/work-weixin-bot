@@ -4,7 +4,7 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
-class EmphasisContent extends AbstractSubMessage
+class VerticalContent extends AbstractSubMessage
 {
     protected string $title;
     protected string $desc;
@@ -36,9 +36,9 @@ class EmphasisContent extends AbstractSubMessage
     /**
      * @param string $title
      *
-     * @return EmphasisContent
+     * @return VerticalContent
      */
-    public function setTitle(string $title): EmphasisContent
+    public function setTitle(string $title): VerticalContent
     {
         $this->title = $title;
         return $this;
@@ -55,9 +55,9 @@ class EmphasisContent extends AbstractSubMessage
     /**
      * @param string $desc
      *
-     * @return EmphasisContent
+     * @return VerticalContent
      */
-    public function setDesc(string $desc): EmphasisContent
+    public function setDesc(string $desc): VerticalContent
     {
         $this->desc = $desc;
         return $this;

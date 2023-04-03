@@ -8,13 +8,14 @@
 ```composer require php-packagist/work-weixin-bot```
 
 ## 使用
+
 ```php
 use PhpPackagist\WorkWeixinBot\Bot;
-use PhpPackagist\WorkWeixinBot\Messages\Text;
-use PhpPackagist\WorkWeixinBot\Messages\News;
-use PhpPackagist\WorkWeixinBot\Messages\Image;
-use PhpPackagist\WorkWeixinBot\Messages\Markdown;
-use PhpPackagist\WorkWeixinBot\Messages\News\Article;
+use PhpPackagist\WorkWeixinBot\Contracts\Text;
+use PhpPackagist\WorkWeixinBot\Contracts\News;
+use PhpPackagist\WorkWeixinBot\Contracts\Image;
+use PhpPackagist\WorkWeixinBot\Contracts\Markdown;
+use PhpPackagist\WorkWeixinBot\Contracts\News\Article;
 
 $bot =  new Bot([
 'key'=>'YOU_BOT_KEY',
@@ -48,12 +49,13 @@ return [
 
 ````
 ### Facades
+
 ```php
-use PhpPackagist\WorkWeixinBot\Messages\Text;
-use PhpPackagist\WorkWeixinBot\Messages\News;
-use PhpPackagist\WorkWeixinBot\Messages\Image;
-use PhpPackagist\WorkWeixinBot\Messages\Markdown;
-use PhpPackagist\WorkWeixinBot\Messages\News\Article;
+use PhpPackagist\WorkWeixinBot\Contracts\Text;
+use PhpPackagist\WorkWeixinBot\Contracts\News;
+use PhpPackagist\WorkWeixinBot\Contracts\Image;
+use PhpPackagist\WorkWeixinBot\Contracts\Markdown;
+use PhpPackagist\WorkWeixinBot\Contracts\News\Article;
 use PhpPackagist\WorkWeixinBot\Laravel\Facades\WorkWeixinBot;
 
 //发送文本消息

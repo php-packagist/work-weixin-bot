@@ -2,12 +2,12 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\News;
 
-use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
 /**
  * News Message articles item class
  */
-class Article extends SubMessage
+class Article extends AbstractSubMessage
 {
     // title
     protected string $title;
@@ -23,10 +23,7 @@ class Article extends SubMessage
 
     public function __construct(string $title = '', string $description = '', string $url = '', string $picurl = '')
     {
-        $this->title = $title;
-        $this->description = $description;
-        $this->url = $url;
-        $this->picurl = $picurl;
+        $this->setTitle($title)->setDescription($description)->setUrl($url)->setPicurl($picurl);
     }
 
     /**
@@ -35,10 +32,10 @@ class Article extends SubMessage
     public function toArray(): array
     {
         return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'url' => $this->url,
-            'picurl' => $this->picurl,
+            'title'       => $this->getTitle(),
+            'description' => $this->getDescription(),
+            'url'         => $this->getUrl(),
+            'picurl'      => $this->getPicurl(),
         ];
     }
 
@@ -51,7 +48,7 @@ class Article extends SubMessage
     }
 
     /**
-     * @param  string  $title
+     * @param string $title
      *
      * @return Article
      */
@@ -70,7 +67,7 @@ class Article extends SubMessage
     }
 
     /**
-     * @param  string  $description
+     * @param string $description
      *
      * @return Article
      */
@@ -89,7 +86,7 @@ class Article extends SubMessage
     }
 
     /**
-     * @param  string  $url
+     * @param string $url
      *
      * @return Article
      */
@@ -108,7 +105,7 @@ class Article extends SubMessage
     }
 
     /**
-     * @param  string  $picurl
+     * @param string $picurl
      *
      * @return Article
      */

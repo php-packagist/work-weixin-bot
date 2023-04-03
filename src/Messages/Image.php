@@ -2,6 +2,8 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
+
 /**
  * Image Message body.
  */
@@ -31,11 +33,10 @@ class Image extends AbstractMessage
      */
     protected string $base64;
 
-    public function __construct(string $file = '')
+    public function __construct(string $base64 = '', string $md5 = '')
     {
-        $this->file = $file;
-
-        $this->initFile();
+        $this->base64 = $base64;
+        $this->md5    = $md5;
     }
 
     public function toArray(): array
@@ -49,43 +50,28 @@ class Image extends AbstractMessage
         ];
     }
 
-    // init file
-    private function initFile()
+    /**
+     * fast create image message
+     *
+     * @param string $file
+     *
+     * @return static
+     */
+    public static function file(string $file = ''): self
     {
-        if (filter_var($this->file, FILTER_VALIDATE_URL)) {
+        if (filter_var($file, FILTER_VALIDATE_URL)) {
             $contextOptions = stream_context_create([
                 'ssl' => [
                     'verify_peer'      => false,
                     'verify_peer_name' => false,
                 ],
             ]);
-            $fileContent = file_get_contents($this->file, false, $contextOptions);
+            $fileContent = file_get_contents($file, false, $contextOptions);
         } else {
-            $fileContent = file_get_contents($this->file);
+            $fileContent = file_get_contents($file);
         }
 
-        $this->base64 = base64_encode($fileContent);
-        $this->md5    = md5_file($this->file);
-    }
-
-    /**
-     * @return string
-     */
-    public function getFile(): string
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param string $file
-     *
-     * @return Image
-     */
-    public function setFile(string $file): Image
-    {
-        $this->file = $file;
-        $this->initFile();
-        return $this;
+        return new static(base64_encode($fileContent), md5_file($file));
     }
 
     /**

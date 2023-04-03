@@ -2,16 +2,170 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Messages\SubMessage;
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
-class QuoteArea extends SubMessage
+class QuoteArea extends AbstractSubMessage
 {
+    public const TYPE_DEFAULT = 0;
+
+    public const TYPE_URL = 1;
+
+    public const TYPE_APP = 2;
+
+    protected int $type;
+    protected string $url;
+    protected string $appId;
+    protected string $pagepath;
+    protected string $title;
+    protected string $quote_text;
+
+    public function __construct($type = self::TYPE_DEFAULT, $title = '', $quote_text = '', $url = '', $appId = '', $pagepath = '')
+    {
+        $this->setType($type)->setTitle($title)->setQuoteText($quote_text)->setUrl($url)->setAppId($appId)->setPagepath($pagepath);
+    }
 
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
-        // TODO: Implement toArray() method.
+        switch ($this->getType()) {
+            case self::TYPE_DEFAULT:
+                return [
+                    'type'       => $this->getType(),
+                    'title'      => $this->getTitle(),
+                    'quote_text' => $this->getQuoteText(),
+                ];
+            case self::TYPE_URL:
+                return [
+                    'type'       => $this->getType(),
+                    'url'        => $this->getUrl(),
+                    'title'      => $this->getTitle(),
+                    'quote_text' => $this->getQuoteText(),
+                ];
+            case self::TYPE_APP:
+                return [
+                    'type'       => $this->getType(),
+                    'appid'      => $this->getAppId(),
+                    'pagepath'   => $this->getPagepath(),
+                    'title'      => $this->getTitle(),
+                    'quote_text' => $this->getQuoteText(),
+                ];
+        }
+        return [];
+    }
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     *
+     * @return QuoteArea
+     */
+    public function setType(int $type): QuoteArea
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return QuoteArea
+     */
+    public function setUrl(string $url): QuoteArea
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppId(): string
+    {
+        return $this->appId;
+    }
+
+    /**
+     * @param string $appId
+     *
+     * @return QuoteArea
+     */
+    public function setAppId(string $appId): QuoteArea
+    {
+        $this->appId = $appId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPagepath(): string
+    {
+        return $this->pagepath;
+    }
+
+    /**
+     * @param string $pagepath
+     *
+     * @return QuoteArea
+     */
+    public function setPagepath(string $pagepath): QuoteArea
+    {
+        $this->pagepath = $pagepath;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return QuoteArea
+     */
+    public function setTitle(string $title): QuoteArea
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQuoteText(): string
+    {
+        return $this->quote_text;
+    }
+
+    /**
+     * @param string $quote_text
+     *
+     * @return QuoteArea
+     */
+    public function setQuoteText(string $quote_text): QuoteArea
+    {
+        $this->quote_text = $quote_text;
+        return $this;
     }
 }

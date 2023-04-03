@@ -2,6 +2,8 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
+use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
+
 /**
  * markdown Message body.
  */

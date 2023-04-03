@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpPackagist\WorkWeixinBot\Messages;
+namespace PhpPackagist\WorkWeixinBot\Contracts;
 
 abstract class AbstractMessage implements MessageInterface
 {

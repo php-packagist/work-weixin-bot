@@ -2,17 +2,19 @@
 
 namespace PhpPackagist\WorkWeixinBot;
 
+use Psr\Http\Message\ResponseInterface;
+
 class Response
 {
     /**
-     * @var \GuzzleHttp\Psr7\Response
+     * @var ResponseInterface
      */
-    protected \GuzzleHttp\Psr7\Response $response;
+    protected ResponseInterface $response;
 
     /**
-     * @param \GuzzleHttp\Psr7\Response $response
+     * @param ResponseInterface $response
      */
-    public function __construct(\GuzzleHttp\Psr7\Response $response)
+    public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
     }
@@ -34,9 +36,9 @@ class Response
     }
 
     /**
-     * @return \GuzzleHttp\Psr7\Response
+     * @return ResponseInterface
      */
-    public function getResponse(): \GuzzleHttp\Psr7\Response
+    public function getResponse(): ResponseInterface
     {
         return $this->response;
     }
