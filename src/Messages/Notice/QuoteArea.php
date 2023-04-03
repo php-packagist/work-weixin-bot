@@ -59,11 +59,11 @@ class QuoteArea extends AbstractNotice
      *
      * @var string
      */
-    protected string $quote_text;
+    protected string $quoteText;
 
-    public function __construct($type = self::TYPE_DEFAULT, $title = '', $quote_text = '', $url = '', $appId = '', $pagepath = '')
+    public function __construct($type = self::TYPE_DEFAULT, $title = '', $quoteText = '', $url = '', $appId = '', $pagepath = '')
     {
-        $this->setType($type)->setTitle($title)->setQuoteText($quote_text)->setUrl($url)->setAppId($appId)->setPagepath($pagepath);
+        $this->setType($type)->setTitle($title)->setQuoteText($quoteText)->setUrl($url)->setAppId($appId)->setPagepath($pagepath);
     }
 
     /**
@@ -113,6 +113,7 @@ class QuoteArea extends AbstractNotice
     public function setType(int $type): QuoteArea
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -132,6 +133,7 @@ class QuoteArea extends AbstractNotice
     public function setUrl(string $url): QuoteArea
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -151,6 +153,7 @@ class QuoteArea extends AbstractNotice
     public function setAppId(string $appId): QuoteArea
     {
         $this->appId = $appId;
+
         return $this;
     }
 
@@ -170,6 +173,7 @@ class QuoteArea extends AbstractNotice
     public function setPagepath(string $pagepath): QuoteArea
     {
         $this->pagepath = $pagepath;
+
         return $this;
     }
 
@@ -189,6 +193,7 @@ class QuoteArea extends AbstractNotice
     public function setTitle(string $title): QuoteArea
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -197,7 +202,7 @@ class QuoteArea extends AbstractNotice
      */
     public function getQuoteText(): string
     {
-        return $this->quote_text;
+        return $this->quoteText;
     }
 
     /**
@@ -207,7 +212,8 @@ class QuoteArea extends AbstractNotice
      */
     public function setQuoteText(string $quote_text): QuoteArea
     {
-        $this->quote_text = $quote_text;
+        $this->quoteText = $quote_text;
+
         return $this;
     }
 }

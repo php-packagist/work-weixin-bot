@@ -9,6 +9,7 @@ class CardAction extends AbstractNotice
 {
     // 0: open the webpage
     public const TYPE_URL = 1;
+
     // 1: open the mini program
     public const TYPE_APP = 2;
 
@@ -75,11 +76,12 @@ class CardAction extends AbstractNotice
     /**
      * @param int $type
      *
-     * @return CardAction
+     * @return self
      */
-    public function setType(int $type): CardAction
+    public function setType(int $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -94,9 +96,9 @@ class CardAction extends AbstractNotice
     /**
      * @param string $url
      *
-     * @return CardAction
+     * @return self
      */
-    public function setUrl(string $url): CardAction
+    public function setUrl(string $url): self
     {
         $this->url = $url;
         return $this;
@@ -113,11 +115,12 @@ class CardAction extends AbstractNotice
     /**
      * @param string $appid
      *
-     * @return CardAction
+     * @return self
      */
-    public function setAppid(string $appid): CardAction
+    public function setAppid(string $appid): self
     {
         $this->appid = $appid;
+
         return $this;
     }
 
@@ -132,11 +135,12 @@ class CardAction extends AbstractNotice
     /**
      * @param string $pagepath
      *
-     * @return CardAction
+     * @return self
      */
-    public function setPagepath(string $pagepath): CardAction
+    public function setPagepath(string $pagepath): self
     {
         $this->pagepath = $pagepath;
+
         return $this;
     }
 }

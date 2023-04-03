@@ -59,9 +59,9 @@ class Text extends AbstractMessage
     /**
      * @param string $content
      *
-     * @return Text
+     * @return self
      */
-    public function setContent(string $content): Text
+    public function setContent(string $content): self
     {
         $this->content = $content;
 
@@ -79,9 +79,9 @@ class Text extends AbstractMessage
     /**
      * @param array $mentionedList
      *
-     * @return Text
+     * @return self
      */
-    public function setMentionedList(array $mentionedList): Text
+    public function setMentionedList(array $mentionedList): self
     {
         $this->mentionedList = $mentionedList;
 
@@ -99,7 +99,7 @@ class Text extends AbstractMessage
     /**
      * @param array $mentionedMobileList
      *
-     * @return Text
+     * @return self
      */
     public function setMentionedMobileList(array $mentionedMobileList): self
     {

@@ -102,11 +102,12 @@ class TextNotice extends AbstractMessage
     /**
      * @param EmphasisContent $emphasisContent
      *
-     * @return TextNotice
+     * @return self
      */
-    public function setEmphasisContent(EmphasisContent $emphasisContent): TextNotice
+    public function setEmphasisContent(EmphasisContent $emphasisContent): self
     {
         $this->emphasisContent = $emphasisContent;
+
         return $this;
     }
 
@@ -121,11 +122,12 @@ class TextNotice extends AbstractMessage
     /**
      * @param string $subTitleText
      *
-     * @return TextNotice
+     * @return self
      */
-    public function setSubTitleText(string $subTitleText): TextNotice
+    public function setSubTitleText(string $subTitleText): self
     {
         $this->subTitleText = $subTitleText;
+
         return $this;
     }
 }

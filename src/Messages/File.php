@@ -46,7 +46,7 @@ class File extends AbstractMessage
     /**
      * @param string $mediaId
      *
-     * @return File
+     * @return self
      */
     public function setMediaId(string $mediaId): self
     {

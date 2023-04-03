@@ -99,11 +99,12 @@ class HorizontalContent extends AbstractNotice
     /**
      * @param string $keyname
      *
-     * @return HorizontalContent
+     * @return self
      */
-    public function setKeyname(string $keyname): HorizontalContent
+    public function setKeyname(string $keyname): self
     {
         $this->keyname = $keyname;
+
         return $this;
     }
 
@@ -118,11 +119,12 @@ class HorizontalContent extends AbstractNotice
     /**
      * @param string $value
      *
-     * @return HorizontalContent
+     * @return self
      */
-    public function setValue(string $value): HorizontalContent
+    public function setValue(string $value): self
     {
         $this->value = $value;
+
         return $this;
     }
 
@@ -137,11 +139,12 @@ class HorizontalContent extends AbstractNotice
     /**
      * @param int $type
      *
-     * @return HorizontalContent
+     * @return self
      */
-    public function setType(int $type): HorizontalContent
+    public function setType(int $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -156,11 +159,12 @@ class HorizontalContent extends AbstractNotice
     /**
      * @param string $url
      *
-     * @return HorizontalContent
+     * @return self
      */
-    public function setUrl(string $url): HorizontalContent
+    public function setUrl(string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -175,11 +179,12 @@ class HorizontalContent extends AbstractNotice
     /**
      * @param string $media_id
      *
-     * @return HorizontalContent
+     * @return self
      */
-    public function setMediaId(string $media_id): HorizontalContent
+    public function setMediaId(string $media_id): self
     {
         $this->media_id = $media_id;
+
         return $this;
     }
 }

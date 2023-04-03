@@ -48,11 +48,12 @@ class VerticalContent extends AbstractNotice
     /**
      * @param string $title
      *
-     * @return VerticalContent
+     * @return self
      */
-    public function setTitle(string $title): VerticalContent
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -67,11 +68,12 @@ class VerticalContent extends AbstractNotice
     /**
      * @param string $desc
      *
-     * @return VerticalContent
+     * @return self
      */
-    public function setDesc(string $desc): VerticalContent
+    public function setDesc(string $desc): self
     {
         $this->desc = $desc;
+
         return $this;
     }
 }

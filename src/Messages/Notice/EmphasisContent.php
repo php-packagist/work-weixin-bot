@@ -48,11 +48,12 @@ class EmphasisContent extends AbstractNotice
     /**
      * @param string $title
      *
-     * @return EmphasisContent
+     * @return self
      */
-    public function setTitle(string $title): EmphasisContent
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -67,11 +68,12 @@ class EmphasisContent extends AbstractNotice
     /**
      * @param string $desc
      *
-     * @return EmphasisContent
+     * @return self
      */
-    public function setDesc(string $desc): EmphasisContent
+    public function setDesc(string $desc): self
     {
         $this->desc = $desc;
+
         return $this;
     }
 }

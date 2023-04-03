@@ -9,6 +9,7 @@ class Jump extends AbstractNotice
 {
     // 1: jump to the specified URL
     public const TYPE_URL = 1;
+
     // 2: jump to the specified mini program
     public const TYPE_APP = 2;
 
@@ -87,11 +88,12 @@ class Jump extends AbstractNotice
     /**
      * @param string $type
      *
-     * @return Jump
+     * @return self
      */
-    public function setType(string $type): Jump
+    public function setType(string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -106,11 +108,12 @@ class Jump extends AbstractNotice
     /**
      * @param string $url
      *
-     * @return Jump
+     * @return self
      */
-    public function setUrl(string $url): Jump
+    public function setUrl(string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -125,11 +128,12 @@ class Jump extends AbstractNotice
     /**
      * @param string $title
      *
-     * @return Jump
+     * @return self
      */
-    public function setTitle(string $title): Jump
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -144,11 +148,12 @@ class Jump extends AbstractNotice
     /**
      * @param string $appId
      *
-     * @return Jump
+     * @return self
      */
-    public function setAppId(string $appId): Jump
+    public function setAppId(string $appId): self
     {
         $this->appId = $appId;
+
         return $this;
     }
 
@@ -163,11 +168,12 @@ class Jump extends AbstractNotice
     /**
      * @param string $pagepath
      *
-     * @return Jump
+     * @return self
      */
-    public function setPagepath(string $pagepath): Jump
+    public function setPagepath(string $pagepath): self
     {
         $this->pagepath = $pagepath;
+
         return $this;
     }
 }

@@ -130,11 +130,12 @@ class NewsNotice extends AbstractMessage
     /**
      * @param CardImage $cardImage
      *
-     * @return NewsNotice
+     * @return self
      */
-    public function setCardImage(CardImage $cardImage): NewsNotice
+    public function setCardImage(CardImage $cardImage): self
     {
         $this->cardImage = $cardImage;
+
         return $this;
     }
 
@@ -149,11 +150,12 @@ class NewsNotice extends AbstractMessage
     /**
      * @param ImageTextArea $imageTextArea
      *
-     * @return NewsNotice
+     * @return self
      */
-    public function setImageTextArea(ImageTextArea $imageTextArea): NewsNotice
+    public function setImageTextArea(ImageTextArea $imageTextArea): self
     {
         $this->imageTextArea = $imageTextArea;
+
         return $this;
     }
 
@@ -168,30 +170,39 @@ class NewsNotice extends AbstractMessage
     /**
      * @param array{VerticalContent} $verticalContentList
      *
-     * @return NewsNotice
+     * @return self
      */
-    public function setVerticalContentList(array $verticalContentList): NewsNotice
+    public function setVerticalContentList(array $verticalContentList): self
     {
         $this->verticalContentList = $verticalContentList;
+
         return $this;
     }
 
     /**
      * @param VerticalContent $verticalContent
      *
-     * @return $this
+     * @return self
      */
-    public function addVerticalContent(VerticalContent $verticalContent): NewsNotice
+    public function addVerticalContent(VerticalContent $verticalContent): self
     {
         $this->verticalContentList[] = $verticalContent;
+
         return $this;
     }
 
+    /**
+     * format verticalContentList
+     *
+     * @return array
+     */
     public function formatVerticalContentList(): array
     {
         $list = [];
         foreach ($this->verticalContentList as $item) {
-            if ($item instanceof VerticalContent) {
+            if (is_array($item)) {
+                $list[] = $item;
+            } elseif ($item instanceof VerticalContent) {
                 $list[] = $item->toArray();
             } else {
                 throw new \InvalidArgumentException('verticalContentList mast be VerticalContent Class.');

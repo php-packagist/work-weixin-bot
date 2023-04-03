@@ -27,8 +27,7 @@ class Image extends AbstractMessage
      */
     public function __construct(string $base64 = '', string $md5 = '')
     {
-        $this->base64 = $base64;
-        $this->md5    = $md5;
+        $this->setBase64($base64)->setMd5($md5);
     }
 
     /**
@@ -86,5 +85,29 @@ class Image extends AbstractMessage
     public function getBase64(): string
     {
         return $this->base64;
+    }
+
+    /**
+     * @param string $md5
+     *
+     * @return self
+     */
+    public function setMd5(string $md5): self
+    {
+        $this->md5 = $md5;
+
+        return $this;
+    }
+
+    /**
+     * @param string $base64
+     *
+     * @return self
+     */
+    public function setBase64(string $base64): self
+    {
+        $this->base64 = $base64;
+
+        return $this;
     }
 }

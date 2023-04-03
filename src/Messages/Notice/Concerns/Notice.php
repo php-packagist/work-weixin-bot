@@ -54,7 +54,9 @@ trait Notice
     {
         $list = [];
         foreach ($this->jumpList as $item) {
-            if ($item instanceof Jump) {
+            if (is_array($item)) {
+                $list[] = $item;
+            } elseif ($item instanceof Jump) {
                 $list[] = $item->toArray();
             } else {
                 throw new \InvalidArgumentException('jumpList mast be Jump Class.');
@@ -72,7 +74,9 @@ trait Notice
     {
         $list = [];
         foreach ($this->horizontalContentList as $item) {
-            if ($item instanceof HorizontalContent) {
+            if (is_array($item)) {
+                $list[] = $item;
+            } elseif ($item instanceof HorizontalContent) {
                 $list[] = $item->toArray();
             } else {
                 throw new \InvalidArgumentException('horizontalContentList mast be HorizontalContent Class.');
@@ -97,6 +101,7 @@ trait Notice
     public function setSource(Source $source): self
     {
         $this->source = $source;
+
         return $this;
     }
 
@@ -116,6 +121,7 @@ trait Notice
     public function setMainTitle(MainTitle $mainTitle): self
     {
         $this->mainTitle = $mainTitle;
+
         return $this;
     }
 
@@ -135,6 +141,7 @@ trait Notice
     public function setHorizontalContentList(array $horizontalContentList): self
     {
         $this->horizontalContentList = $horizontalContentList;
+
         return $this;
     }
 
@@ -148,6 +155,7 @@ trait Notice
     public function addHorizontalContent(HorizontalContent $horizontalContent): self
     {
         $this->horizontalContentList[] = $horizontalContent;
+
         return $this;
     }
 
@@ -167,6 +175,7 @@ trait Notice
     public function setQuoteArea(QuoteArea $quoteArea): self
     {
         $this->quoteArea = $quoteArea;
+
         return $this;
     }
 

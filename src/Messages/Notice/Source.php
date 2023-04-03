@@ -74,11 +74,12 @@ class Source extends AbstractNotice
     /**
      * @param string $icon_url
      *
-     * @return Source
+     * @return self
      */
-    public function setIconUrl(string $icon_url): Source
+    public function setIconUrl(string $icon_url): self
     {
         $this->icon_url = $icon_url;
+
         return $this;
     }
 
@@ -93,9 +94,9 @@ class Source extends AbstractNotice
     /**
      * @param string $desc
      *
-     * @return Source
+     * @return self
      */
-    public function setDesc(string $desc): Source
+    public function setDesc(string $desc): self
     {
         $this->desc = $desc;
 
@@ -113,9 +114,9 @@ class Source extends AbstractNotice
     /**
      * @param int $desc_color
      *
-     * @return Source
+     * @return self
      */
-    public function setDescColor(int $desc_color): Source
+    public function setDescColor(int $desc_color): self
     {
         $this->desc_color = $desc_color;
 

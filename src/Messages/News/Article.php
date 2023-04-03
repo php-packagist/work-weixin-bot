@@ -73,11 +73,12 @@ class Article implements MessageInterface
     /**
      * @param string $title
      *
-     * @return Article
+     * @return self
      */
-    public function setTitle(string $title): Article
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 

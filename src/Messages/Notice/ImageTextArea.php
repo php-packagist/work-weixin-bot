@@ -9,8 +9,10 @@ class ImageTextArea extends AbstractNotice
 {
     // 0:not click action
     public const TYPE_DEFAULT = 0;
+
     // 1:open the webpage
     public const TYPE_URL = 1;
+
     // 2:open the mini program
     public const TYPE_APP = 2;
 
@@ -117,11 +119,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param int $type
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setType(int $type): ImageTextArea
+    public function setType(int $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -136,11 +139,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $url
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setUrl(string $url): ImageTextArea
+    public function setUrl(string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -155,11 +159,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $title
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setTitle(string $title): ImageTextArea
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -174,11 +179,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $desc
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setDesc(string $desc): ImageTextArea
+    public function setDesc(string $desc): self
     {
         $this->desc = $desc;
+
         return $this;
     }
 
@@ -193,11 +199,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $imageUrl
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setImageUrl(string $imageUrl): ImageTextArea
+    public function setImageUrl(string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
+
         return $this;
     }
 
@@ -212,11 +219,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $appId
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setAppId(string $appId): ImageTextArea
+    public function setAppId(string $appId): self
     {
         $this->appId = $appId;
+
         return $this;
     }
 
@@ -231,11 +239,12 @@ class ImageTextArea extends AbstractNotice
     /**
      * @param string $pagepath
      *
-     * @return ImageTextArea
+     * @return self
      */
-    public function setPagepath(string $pagepath): ImageTextArea
+    public function setPagepath(string $pagepath): self
     {
         $this->pagepath = $pagepath;
+
         return $this;
     }
 }

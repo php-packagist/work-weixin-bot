@@ -47,11 +47,12 @@ class CardImage extends AbstractNotice
     /**
      * @param string $url
      *
-     * @return CardImage
+     * @return self
      */
-    public function setUrl(string $url): CardImage
+    public function setUrl(string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -66,11 +67,12 @@ class CardImage extends AbstractNotice
     /**
      * @param string $aspect_ratio
      *
-     * @return CardImage
+     * @return self
      */
-    public function setAspectRatio(string $aspect_ratio): CardImage
+    public function setAspectRatio(string $aspect_ratio): self
     {
         $this->aspect_ratio = $aspect_ratio;
+
         return $this;
     }
 }
