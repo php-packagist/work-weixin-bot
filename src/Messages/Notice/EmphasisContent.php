@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * emphasis data format
  */
-class EmphasisContent extends AbstractSubMessage
+class EmphasisContent extends AbstractNotice
 {
     /**
      * title

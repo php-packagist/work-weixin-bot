@@ -2,9 +2,7 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
-class CardImage extends AbstractSubMessage
+class CardImage extends AbstractNotice
 {
     /**
      * image url

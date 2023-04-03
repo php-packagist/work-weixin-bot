@@ -49,11 +49,13 @@ class News extends AbstractMessage
         $articles = [];
 
         foreach ($this->articles as $article) {
-            if (! $article instanceof Article) {
+            if (is_array($article)) {
+                $articles[] = $article;
+            } elseif ($article instanceof Article) {
+                $articles[] = $article->toArray();
+            } else {
                 throw new \InvalidArgumentException('Article mast be Article Class.');
             }
-
-            $articles[] = $article->toArray();
         }
 
         return $articles;

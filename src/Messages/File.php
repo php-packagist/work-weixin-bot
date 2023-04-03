@@ -12,14 +12,14 @@ class File extends AbstractMessage
      *
      * @var string
      */
-    protected string $media_id;
+    protected string $mediaId;
 
     /**
-     * @param string $media_id
+     * @param string $mediaId
      */
-    public function __construct(string $media_id = '')
+    public function __construct(string $mediaId = '')
     {
-        $this->setMediaId($media_id);
+        $this->setMediaId($mediaId);
     }
 
     /**
@@ -30,7 +30,7 @@ class File extends AbstractMessage
         return [
             'msgtype' => 'file',
             'file'    => [
-                'media_id' => $this->media_id,
+                'media_id' => $this->getMediaId(),
             ],
         ];
     }
@@ -40,17 +40,17 @@ class File extends AbstractMessage
      */
     public function getMediaId(): string
     {
-        return $this->media_id;
+        return $this->mediaId;
     }
 
     /**
-     * @param string $media_id
+     * @param string $mediaId
      *
      * @return File
      */
-    public function setMediaId(string $media_id): self
+    public function setMediaId(string $mediaId): self
     {
-        $this->media_id = $media_id;
+        $this->mediaId = $mediaId;
 
         return $this;
     }

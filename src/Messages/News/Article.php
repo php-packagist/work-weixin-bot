@@ -2,13 +2,16 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\News;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
+use PhpPackagist\WorkWeixinBot\Concerns\Makeable;
+use PhpPackagist\WorkWeixinBot\Contracts\MessageInterface;
 
 /**
  * News Message articles item class
  */
-class Article extends AbstractSubMessage
+class Article implements MessageInterface
 {
+    use Makeable;
+
     /**
      * title
      *

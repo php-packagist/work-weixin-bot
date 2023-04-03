@@ -2,19 +2,20 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * source data format
  */
-class Source extends AbstractSubMessage
+class Source extends AbstractNotice
 {
     // 0:gray
     public const COLOR_GRAY = 0;
+
     // 1:black
     public const COLOR_BLACK = 1;
+
     // 2:red
     public const COLOR_RED = 2;
+
     // 3:green
     public const COLOR_GREEN = 3;
 
@@ -97,6 +98,7 @@ class Source extends AbstractSubMessage
     public function setDesc(string $desc): Source
     {
         $this->desc = $desc;
+
         return $this;
     }
 
@@ -116,6 +118,7 @@ class Source extends AbstractSubMessage
     public function setDescColor(int $desc_color): Source
     {
         $this->desc_color = $desc_color;
+
         return $this;
     }
 }

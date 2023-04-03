@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpPackagist\WorkWeixinBot\Concerns;
+namespace PhpPackagist\WorkWeixinBot\Messages\Notice\Concerns;
 
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\HorizontalContent;

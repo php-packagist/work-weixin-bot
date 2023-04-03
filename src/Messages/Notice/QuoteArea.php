@@ -2,13 +2,11 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * quote area data format
  * Not recommended with EmphasisContent
  */
-class QuoteArea extends AbstractSubMessage
+class QuoteArea extends AbstractNotice
 {
     // 0:default not click action
     public const TYPE_DEFAULT = 0;

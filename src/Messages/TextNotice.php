@@ -2,8 +2,8 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Concerns\Notice;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Concerns\Notice;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\EmphasisContent;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;

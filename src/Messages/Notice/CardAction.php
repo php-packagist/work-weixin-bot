@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * card click action
  */
-class CardAction extends AbstractSubMessage
+class CardAction extends AbstractNotice
 {
     // 0: open the webpage
     public const TYPE_URL = 1;

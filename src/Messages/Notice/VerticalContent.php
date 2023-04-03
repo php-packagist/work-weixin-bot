@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * Secondary Vertical Content of the Card data format
  */
-class VerticalContent extends AbstractSubMessage
+class VerticalContent extends AbstractNotice
 {
     /**
      * title

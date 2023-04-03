@@ -83,49 +83,49 @@ class Bot
      * Send Text Message.
      *
      * @param string $content
-     * @param array  $mentioned_list
-     * @param array  $mentioned_mobile_list
+     * @param array  $mentionedList
+     * @param array  $mentionedMobileList
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendText(string $content, array $mentioned_list = [], array $mentioned_mobile_list = []): Response
+    public function sendText(string $content, array $mentionedList = [], array $mentionedMobileList = []): Response
     {
         return $this->send(Text::make(
-            $content, $mentioned_list, $mentioned_mobile_list
+            $content, $mentionedList, $mentionedMobileList
         ));
     }
 
     /**
      * Send File Message.
      *
-     * @param string $media_id
+     * @param string $mediaId
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendFile(string $media_id): Response
+    public function sendFile(string $mediaId): Response
     {
         return $this->send(File::make(
-            $media_id
+            $mediaId
         ));
     }
 
     /**
      * Send Image Message.
      *
-     * @param string $file_path
+     * @param string $filePath
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendImage(string $file_path): Response
+    public function sendImage(string $filePath): Response
     {
         return $this->send(Image::file(
-            $file_path
+            $filePath
         ));
     }
 
@@ -233,20 +233,20 @@ class Bot
     /**
      * Upload file.
      *
-     * @param string $file_path
+     * @param string $filePath
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function upload(string $file_path): Response
+    public function upload(string $filePath): Response
     {
         $response = $this->client->request('POST',
             sprintf(self::API_UPLOAD, $this->config['key']), [
                 RequestOptions::MULTIPART => [
                     [
                         'name'     => 'media',
-                        'contents' => fopen($file_path, 'r'),
+                        'contents' => fopen($filePath, 'r'),
                     ],
                 ],
             ]);

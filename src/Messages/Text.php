@@ -12,25 +12,25 @@ class Text extends AbstractMessage
     /**
      * @var array if you @all or @someone, you can use this property to set the mentioned list
      */
-    protected array $mentioned_list = [];
+    protected array $mentionedList = [];
 
     /**
      * @var array if you @all or @someone, you can use this property to set the mentioned mobile list
      */
-    protected array $mentioned_mobile_list = [];
+    protected array $mentionedMobileList = [];
 
     /**
      * Text constructor.
      *
      * @param string $content
-     * @param array  $mentioned_list
-     * @param array  $mentioned_mobile_list
+     * @param array  $mentionedList
+     * @param array  $mentionedMobileList
      */
-    public function __construct(string $content = '', array $mentioned_list = [], array $mentioned_mobile_list = [])
+    public function __construct(string $content = '', array $mentionedList = [], array $mentionedMobileList = [])
     {
         $this->setContent($content);
-        $this->setMentionedList($mentioned_list);
-        $this->setMentionedMobileList($mentioned_mobile_list);
+        $this->setMentionedList($mentionedList);
+        $this->setMentionedMobileList($mentionedMobileList);
     }
 
     /**
@@ -73,17 +73,17 @@ class Text extends AbstractMessage
      */
     public function getMentionedList(): array
     {
-        return $this->mentioned_list;
+        return $this->mentionedList;
     }
 
     /**
-     * @param array $mentioned_list
+     * @param array $mentionedList
      *
      * @return Text
      */
-    public function setMentionedList(array $mentioned_list): Text
+    public function setMentionedList(array $mentionedList): Text
     {
-        $this->mentioned_list = $mentioned_list;
+        $this->mentionedList = $mentionedList;
 
         return $this;
     }
@@ -93,17 +93,17 @@ class Text extends AbstractMessage
      */
     public function getMentionedMobileList(): array
     {
-        return $this->mentioned_mobile_list;
+        return $this->mentionedMobileList;
     }
 
     /**
-     * @param array $mentioned_mobile_list
+     * @param array $mentionedMobileList
      *
      * @return Text
      */
-    public function setMentionedMobileList(array $mentioned_mobile_list): self
+    public function setMentionedMobileList(array $mentionedMobileList): self
     {
-        $this->mentioned_mobile_list = $mentioned_mobile_list;
+        $this->mentionedMobileList = $mentionedMobileList;
 
         return $this;
     }

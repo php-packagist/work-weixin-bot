@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * Jump data format
  */
-class Jump extends AbstractSubMessage
+class Jump extends AbstractNotice
 {
     // 1: jump to the specified URL
     public const TYPE_URL = 1;

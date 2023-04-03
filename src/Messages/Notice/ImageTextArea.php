@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * Image on the Left, Text on the Right Format
  */
-class ImageTextArea extends AbstractSubMessage
+class ImageTextArea extends AbstractNotice
 {
     // 0:not click action
     public const TYPE_DEFAULT = 0;

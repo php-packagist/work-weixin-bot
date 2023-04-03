@@ -2,9 +2,9 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Concerns\Notice;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardImage;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Concerns\Notice;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\HorizontalContent;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\ImageTextArea;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\Jump;

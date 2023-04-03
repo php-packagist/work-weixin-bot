@@ -2,12 +2,10 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
-
 /**
  * Horizontal Content format
  */
-class HorizontalContent extends AbstractSubMessage
+class HorizontalContent extends AbstractNotice
 {
     // 0: default
     public const TYPE_DEFAULT = 0;
