@@ -2,7 +2,7 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
+use PhpPackagist\WorkWeixinBot\Concerns\Notice;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardImage;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\HorizontalContent;
@@ -12,7 +12,6 @@ use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\VerticalContent;
-use PhpPackagist\WorkWeixinBot\Traits\Notice;
 
 /**
  * News Notice Message body

@@ -3,7 +3,6 @@
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
 use PhpPackagist\WorkWeixinBot\Messages\News\Article;
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
 
 /**
  * News Message body
@@ -40,16 +39,23 @@ class News extends AbstractMessage
         ];
     }
 
-    // format articles
+    /**
+     * format articles
+     *
+     * @return array
+     */
     protected function formatArticles(): array
     {
         $articles = [];
+
         foreach ($this->articles as $article) {
             if (! $article instanceof Article) {
-                throw new \InvalidArgumentException('articles mast be Article Class.');
+                throw new \InvalidArgumentException('Article mast be Article Class.');
             }
+
             $articles[] = $article->toArray();
         }
+
         return $articles;
     }
 
@@ -58,11 +64,12 @@ class News extends AbstractMessage
      *
      * @param Article $articles
      *
-     * @return News
+     * @return self
      */
-    public function addArticles(Article $articles): News
+    public function addArticle(Article $articles): self
     {
         $this->articles[] = $articles;
+
         return $this;
     }
 

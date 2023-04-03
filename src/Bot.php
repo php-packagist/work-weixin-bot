@@ -92,7 +92,9 @@ class Bot
      */
     public function sendText(string $content, array $mentioned_list = [], array $mentioned_mobile_list = []): Response
     {
-        return $this->send(Text::make(...func_get_args()));
+        return $this->send(Text::make(
+            $content, $mentioned_list, $mentioned_mobile_list
+        ));
     }
 
     /**
@@ -106,7 +108,9 @@ class Bot
      */
     public function sendFile(string $media_id): Response
     {
-        return $this->send(File::make(...func_get_args()));
+        return $this->send(File::make(
+            $media_id
+        ));
     }
 
     /**
@@ -120,7 +124,9 @@ class Bot
      */
     public function sendImage(string $file_path): Response
     {
-        return $this->send(Image::file(...func_get_args()));
+        return $this->send(Image::file(
+            $file_path
+        ));
     }
 
     /**
@@ -134,7 +140,9 @@ class Bot
      */
     public function sendMarkdown(string $content): Response
     {
-        return $this->send(Markdown::make(...func_get_args()));
+        return $this->send(Markdown::make(
+            $content
+        ));
     }
 
     /**
@@ -148,7 +156,9 @@ class Bot
      */
     public function sendNews(array $articles): Response
     {
-        return $this->send(News::make(...func_get_args()));
+        return $this->send(News::make(
+            $articles
+        ));
     }
 
     /**
@@ -177,7 +187,16 @@ class Bot
         array $jumpList = [],
         ?CardAction $cardAction = null
     ): Response {
-        return $this->send(TextNotice::make(...func_get_args()));
+        return $this->send(TextNotice::make(
+            $source,
+            $mainTitle,
+            $emphasisContent,
+            $quoteArea,
+            $subTitleText,
+            $horizontalContentList,
+            $jumpList,
+            $cardAction
+        ));
     }
 
     /**

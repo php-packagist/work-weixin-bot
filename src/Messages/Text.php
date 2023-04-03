@@ -2,8 +2,6 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
-
 class Text extends AbstractMessage
 {
     /**
@@ -43,9 +41,9 @@ class Text extends AbstractMessage
         return [
             'msgtype' => 'text',
             'text'    => [
-                'content'               => $this->content,
-                'mentioned_list'        => $this->mentioned_list,
-                'mentioned_mobile_list' => $this->mentioned_mobile_list,
+                'content'               => $this->getContent(),
+                'mentioned_list'        => $this->getMentionedList(),
+                'mentioned_mobile_list' => $this->getMentionedMobileList(),
             ],
         ];
     }

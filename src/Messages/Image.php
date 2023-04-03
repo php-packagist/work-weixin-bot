@@ -2,23 +2,11 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
-
 /**
  * Image Message body.
  */
 class Image extends AbstractMessage
 {
-    /**
-     * file path or url
-     *
-     * @var string
-     *
-     * @example https://www.baidu.com/img/bd_logo1.png
-     *          /Users/xxx/Downloads/bd_logo1.png
-     */
-    protected string $file;
-
     /**
      * md5 of file
      *
@@ -33,19 +21,26 @@ class Image extends AbstractMessage
      */
     protected string $base64;
 
+    /*
+     * @param string $base64
+     * @param string $md5
+     */
     public function __construct(string $base64 = '', string $md5 = '')
     {
         $this->base64 = $base64;
         $this->md5    = $md5;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
             'msgtype' => 'image',
             'image'   => [
-                'base64' => $this->base64,
-                'md5'    => $this->md5,
+                'base64' => $this->getBase64(),
+                'md5'    => $this->getMd5(),
             ],
         ];
     }
@@ -60,18 +55,21 @@ class Image extends AbstractMessage
     public static function file(string $file = ''): self
     {
         if (filter_var($file, FILTER_VALIDATE_URL)) {
-            $contextOptions = stream_context_create([
+            $options = stream_context_create([
                 'ssl' => [
                     'verify_peer'      => false,
                     'verify_peer_name' => false,
                 ],
             ]);
-            $fileContent = file_get_contents($file, false, $contextOptions);
+
+            $content = file_get_contents($file, false, $options);
         } else {
-            $fileContent = file_get_contents($file);
+            $content = file_get_contents($file);
         }
 
-        return new static(base64_encode($fileContent), md5_file($file));
+        return new static(
+            base64_encode($content), md5_file($file)
+        );
     }
 
     /**

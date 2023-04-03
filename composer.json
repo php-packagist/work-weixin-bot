@@ -1,6 +1,6 @@
 {
     "name": "php-packagist/work-weixin-bot",
-    "description": "企业微信机器人 SDK",
+    "description": "Work weixin robot SDK",
     "type": "library",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.14",

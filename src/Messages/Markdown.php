@@ -2,8 +2,6 @@
 
 namespace PhpPackagist\WorkWeixinBot\Messages;
 
-use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
-
 /**
  * markdown Message body.
  */
@@ -27,17 +25,23 @@ class Markdown extends AbstractMessage
      */
     protected string $content;
 
+    /**
+     * @param string $content
+     */
     public function __construct(string $content = '')
     {
         $this->content = $content;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
             'msgtype'  => 'markdown',
             'markdown' => [
-                'content' => $this->content,
+                'content' => $this->getContent(),
             ],
         ];
     }
@@ -53,11 +57,12 @@ class Markdown extends AbstractMessage
     /**
      * @param string $content
      *
-     * @return Markdown
+     * @return self
      */
-    public function setContent(string $content): Markdown
+    public function setContent(string $content): self
     {
         $this->content = $content;
+
         return $this;
     }
 }

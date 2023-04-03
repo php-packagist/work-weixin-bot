@@ -39,7 +39,11 @@ class Article extends AbstractSubMessage
 
     public function __construct(string $title = '', string $description = '', string $url = '', string $picurl = '')
     {
-        $this->setTitle($title)->setDescription($description)->setUrl($url)->setPicurl($picurl);
+        $this->setTitle($title)
+            ->setDescription($description)
+            ->setUrl($url)
+            ->setPicurl($picurl)
+        ;
     }
 
     /**
@@ -85,11 +89,12 @@ class Article extends AbstractSubMessage
     /**
      * @param string $description
      *
-     * @return Article
+     * @return self
      */
-    public function setDescription(string $description): Article
+    public function setDescription(string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -104,11 +109,12 @@ class Article extends AbstractSubMessage
     /**
      * @param string $url
      *
-     * @return Article
+     * @return self
      */
-    public function setUrl(string $url): Article
+    public function setUrl(string $url): self
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -123,11 +129,12 @@ class Article extends AbstractSubMessage
     /**
      * @param string $picurl
      *
-     * @return Article
+     * @return self
      */
-    public function setPicurl(string $picurl): Article
+    public function setPicurl(string $picurl): self
     {
         $this->picurl = $picurl;
+
         return $this;
     }
 }
