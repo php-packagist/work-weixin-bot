@@ -4,9 +4,13 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
 
+/**
+ * File Message body
+ */
 class File extends AbstractMessage
 {
     /**
+     * file id from upload file.
      * @var string
      */
     protected string $media_id;

@@ -11,14 +11,41 @@ use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
 
 trait Notice
 {
+    /**
+     * card source information
+     *
+     * @var Source
+     */
     protected Source $source;
 
+    /**
+     * main title
+     *
+     * @var MainTitle
+     */
     protected MainTitle $mainTitle;
 
+    /**
+     * horizontal content list
+     *
+     * @var array
+     */
     protected array $horizontalContentList;
 
+    /**
+     * Reference Citation Style
+     *
+     * @var QuoteArea
+     */
     protected QuoteArea $quoteArea;
 
+    /**
+     * jump lists
+     *
+     * optional
+     *
+     * @var array
+     */
     protected array $jumpList;
 
     protected CardAction $cardAction;
@@ -36,6 +63,11 @@ trait Notice
         return $list;
     }
 
+    /**
+     * format horizontal content list
+     *
+     * @return array
+     */
     public function formatHorizontalContentList(): array
     {
         $list = [];
@@ -96,13 +128,26 @@ trait Notice
     }
 
     /**
-     * @param array $horizontalContentList
+     * @param array{HorizontalContent} $horizontalContentList
      *
      * @return self
      */
     public function setHorizontalContentList(array $horizontalContentList): self
     {
         $this->horizontalContentList = $horizontalContentList;
+        return $this;
+    }
+
+    /**
+     * add horizontal content
+     *
+     * @param HorizontalContent $horizontalContent
+     *
+     * @return self
+     */
+    public function addHorizontalContent(HorizontalContent $horizontalContent): self
+    {
+        $this->horizontalContentList[] = $horizontalContent;
         return $this;
     }
 
@@ -134,13 +179,26 @@ trait Notice
     }
 
     /**
-     * @param array $jumpList
+     * @param array{Jump} $jumpList
      *
      * @return self
      */
     public function setJumpList(array $jumpList): self
     {
         $this->jumpList = $jumpList;
+        return $this;
+    }
+
+    /**
+     * add jump
+     *
+     * @param Jump $jump
+     *
+     * @return self
+     */
+    public function addJump(Jump $jump): self
+    {
+        $this->jumpList[] = $jump;
         return $this;
     }
 

@@ -4,9 +4,23 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * emphasis data format
+ */
 class EmphasisContent extends AbstractSubMessage
 {
+    /**
+     * title
+     *
+     * @var string
+     */
     protected string $title;
+
+    /**
+     * description
+     *
+     * @var string
+     */
     protected string $desc;
 
     public function __construct(string $title = '', string $desc = '')

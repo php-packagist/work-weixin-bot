@@ -4,19 +4,43 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * source data format
+ */
 class Source extends AbstractSubMessage
 {
-    // gray
+    // 0:gray
     public const COLOR_GRAY = 0;
-    // black
+    // 1:black
     public const COLOR_BLACK = 1;
-    // red
+    // 2:red
     public const COLOR_RED = 2;
-    // green
+    // 3:green
     public const COLOR_GREEN = 3;
 
+    /**
+     * icon url
+     *
+     * @var string
+     */
     protected string $icon_url;
+
+    /**
+     * description
+     *
+     * @var string
+     */
     protected string $desc;
+
+    /**
+     * description color
+     * 0:gray
+     * 1:black
+     * 2:red
+     * 3:green
+     *
+     * @var int
+     */
     protected int $desc_color;
 
     public function __construct(string $icon_url = '', string $desc = '', $desc_color = self::COLOR_GRAY)

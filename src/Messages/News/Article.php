@@ -9,16 +9,32 @@ use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
  */
 class Article extends AbstractSubMessage
 {
-    // title
+    /**
+     * title
+     *
+     * @var string
+     */
     protected string $title;
 
-    // description
+    /**
+     * description
+     *
+     * @var string
+     */
     protected string $description;
 
-    // link
+    /**
+     * link
+     *
+     * @var string
+     */
     protected string $url;
 
-    // image link
+    /**
+     * image link
+     *
+     * @var string
+     */
     protected string $picurl;
 
     public function __construct(string $title = '', string $description = '', string $url = '', string $picurl = '')

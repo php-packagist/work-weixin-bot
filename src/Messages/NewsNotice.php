@@ -5,22 +5,56 @@ namespace PhpPackagist\WorkWeixinBot\Messages;
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractMessage;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\CardImage;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\HorizontalContent;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\ImageTextArea;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Jump;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\VerticalContent;
 use PhpPackagist\WorkWeixinBot\Traits\Notice;
 
+/**
+ * News Notice Message body
+ */
 class NewsNotice extends AbstractMessage
 {
     use Notice;
 
+    /**
+     * Image format
+     *
+     * @var CardImage
+     */
     protected CardImage $cardImage;
+
+    /**
+     * Image on the Left, Text on the Right Format
+     *
+     * @var ImageTextArea
+     */
     protected ImageTextArea $imageTextArea;
 
+    /**
+     * Secondary Vertical Content of the Card
+     *
+     * optional
+     *
+     * @var array
+     */
     protected array $verticalContentList;
 
+    /**
+     * @param Source|null        $source
+     * @param MainTitle|null     $mainTitle
+     * @param CardImage|null     $cardImage
+     * @param ImageTextArea|null $imageTextArea
+     * @param QuoteArea|null     $quoteArea
+     * @param  array{VerticalContent}    $verticalContentList
+     * @param  array{HorizontalContent}  $horizontalContentList
+     * @param  array{Jump}               $jumpList
+     * @param CardAction|null $cardAction
+     */
     public function __construct(
         ?Source $source = null,
         ?MainTitle $mainTitle = null,
@@ -133,13 +167,24 @@ class NewsNotice extends AbstractMessage
     }
 
     /**
-     * @param array $verticalContentList
+     * @param array{VerticalContent} $verticalContentList
      *
      * @return NewsNotice
      */
     public function setVerticalContentList(array $verticalContentList): NewsNotice
     {
         $this->verticalContentList = $verticalContentList;
+        return $this;
+    }
+
+    /**
+     * @param VerticalContent $verticalContent
+     *
+     * @return $this
+     */
+    public function addVerticalContent(VerticalContent $verticalContent): NewsNotice
+    {
+        $this->verticalContentList[] = $verticalContent;
         return $this;
     }
 

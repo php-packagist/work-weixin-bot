@@ -4,19 +4,63 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * quote area data format
+ * Not recommended with EmphasisContent
+ */
 class QuoteArea extends AbstractSubMessage
 {
+    // 0:default not click action
     public const TYPE_DEFAULT = 0;
 
+    // 1:open the webpage
     public const TYPE_URL = 1;
 
+    // 2:open the mini program
     public const TYPE_APP = 2;
 
+    /**
+     * 0:default not click action
+     * 1:open the webpage
+     * 2:open the mini program
+     *
+     * @var int
+     */
     protected int $type;
+
+    /**
+     * link url
+     *
+     * @var string
+     */
     protected string $url;
+
+    /**
+     * mini program appid
+     *
+     * @var string
+     */
     protected string $appId;
+
+    /**
+     * mini program page path
+     *
+     * @var string
+     */
     protected string $pagepath;
+
+    /**
+     * title
+     *
+     * @var string
+     */
     protected string $title;
+
+    /**
+     * quote text
+     *
+     * @var string
+     */
     protected string $quote_text;
 
     public function __construct($type = self::TYPE_DEFAULT, $title = '', $quote_text = '', $url = '', $appId = '', $pagepath = '')

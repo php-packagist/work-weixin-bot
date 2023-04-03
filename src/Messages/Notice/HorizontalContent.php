@@ -4,16 +4,56 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * Horizontal Content format
+ */
 class HorizontalContent extends AbstractSubMessage
 {
+    // 0: default
     public const TYPE_DEFAULT = 0;
-    public const TYPE_URL     = 1;
-    public const TYPE_MEDIA   = 2;
+    // 1: jump to the specified URL
+    public const TYPE_URL = 1;
+    // 2: file media
+    public const TYPE_MEDIA = 2;
 
+    /**
+     * subtitle
+     * propose:No more than 5 words
+     *
+     * @var string
+     */
     protected string $keyname;
+
+    /**
+     * content
+     * if type is 2 so field is file name.
+     * propose:No more than 20 words
+     *
+     * @var string
+     */
     protected string $value;
+
+    /**
+     * 0: default
+     * 1: jump to the specified URL
+     * 2: file media
+     *
+     * @var int
+     */
     protected int $type;
+
+    /**
+     * link url
+     *
+     * @var string
+     */
     protected string $url;
+
+    /**
+     * file media id
+     *
+     * @var string
+     */
     protected string $media_id;
 
     public function __construct(string $keyname = '', string $value = '', int $type = self::TYPE_DEFAULT, string $url = '', string $media_id = '')

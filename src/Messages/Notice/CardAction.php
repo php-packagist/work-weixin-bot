@@ -4,17 +4,40 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * card click action
+ */
 class CardAction extends AbstractSubMessage
 {
+    // 0: open the webpage
     public const TYPE_URL = 1;
+    // 1: open the mini program
     public const TYPE_APP = 2;
 
+    /**
+     * @var int 0: open the webpage 1: open the mini program
+     */
     protected int $type;
 
+    /**
+     * link url
+     *
+     * @var string
+     */
     protected string $url;
 
+    /**
+     * mini program appid
+     *
+     * @var string
+     */
     protected string $appid;
 
+    /**
+     * mini program page path
+     *
+     * @var string
+     */
     protected string $pagepath;
 
     public function __construct(int $type = 0, string $url = '', string $appid = '', string $pagepath = '')

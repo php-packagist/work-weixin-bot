@@ -4,18 +4,53 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * Jump data format
+ */
 class Jump extends AbstractSubMessage
 {
+    // 1: jump to the specified URL
     public const TYPE_URL = 1;
+    // 2: jump to the specified mini program
     public const TYPE_APP = 2;
 
-    protected string $type;
+    /**
+     * 1: jump to the specified URL
+     * 2: jump to the specified mini program
+     *
+     * @var int
+     */
+    protected int $type;
+
+    /**
+     * link url
+     *
+     * @var string
+     */
     protected string $url;
+
+    /**
+     * title
+     *
+     * @var string
+     */
     protected string $title;
+
+    /**
+     * mini program appid
+     *
+     * @var string
+     */
     protected string $appId;
+
+    /**
+     * mini program page path
+     *
+     * @var string
+     */
     protected string $pagepath;
 
-    public function __construct(string $type = '', string $url = '', string $title = '', string $appId = '', string $pagepath = '')
+    public function __construct(int $type = self::TYPE_URL, string $url = '', string $title = '', string $appId = '', string $pagepath = '')
     {
         $this->setType($type)->setUrl($url)->setTitle($title)->setAppId($appId)->setPagepath($pagepath);
     }

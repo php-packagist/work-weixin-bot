@@ -10,12 +10,23 @@ use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
 use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
 use PhpPackagist\WorkWeixinBot\Traits\Notice;
 
+/**
+ * Text Notice Message body
+ */
 class TextNotice extends AbstractMessage
 {
     use Notice;
 
+    /**
+     * Critical Data Format
+     * @var EmphasisContent
+     */
     protected EmphasisContent $emphasisContent;
 
+    /**
+     * Subtitle Text
+     * @var string
+     */
     protected string $subTitleText;
 
     public function __construct(

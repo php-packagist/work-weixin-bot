@@ -4,20 +4,69 @@ namespace PhpPackagist\WorkWeixinBot\Messages\Notice;
 
 use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
+/**
+ * Image on the Left, Text on the Right Format
+ */
 class ImageTextArea extends AbstractSubMessage
 {
+    // 0:not click action
     public const TYPE_DEFAULT = 0;
-
+    // 1:open the webpage
     public const TYPE_URL = 1;
-
+    // 2:open the mini program
     public const TYPE_APP = 2;
 
+    /**
+     * 0:not click action
+     * 1:open the webpage
+     * 2:open the mini program
+     *
+     * @var int
+     */
     protected int $type;
+
+    /**
+     * link url
+     *
+     * @var string
+     */
     protected string $url;
+
+    /**
+     * title
+     *
+     * @var string
+     */
     protected string $title;
+
+    /**
+     * description
+     *
+     * @var string
+     */
     protected string $desc;
+
+    /**
+     * image url
+     *
+     * @var string
+     */
     protected string $imageUrl;
+
+    /**
+     * mini program appid
+     * if type is 2, this field is required
+     *
+     * @var string
+     */
     protected string $appId;
+
+    /**
+     * mini program page path
+     * if type is 2, this field is required
+     *
+     * @var string
+     */
     protected string $pagepath;
 
     public function __construct(int $type = self::TYPE_DEFAULT, string $title = '', string $desc = '', string $imageUrl = '', string $url = '', string $appId = '', string $pagepath = '')

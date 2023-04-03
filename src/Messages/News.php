@@ -20,7 +20,7 @@ class News extends AbstractMessage
     /**
      * articles item mast be PhpPackagist\WorkWeixinBot\Messages\News\Article Class.
      *
-     * @param array $articles
+     * @param array{Article} $articles
      */
     public function __construct(array $articles = [])
     {

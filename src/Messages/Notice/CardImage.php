@@ -6,7 +6,20 @@ use PhpPackagist\WorkWeixinBot\Contracts\AbstractSubMessage;
 
 class CardImage extends AbstractSubMessage
 {
+    /**
+     * image url
+     *
+     * @var string
+     */
     protected string $url;
+
+    /**
+     * aspect ratio of image.
+     * Mast be in the range of 1.3 to 2.25
+     * default 1.3
+     *
+     * @var float
+     */
     protected float $aspect_ratio;
 
     public function __construct(string $url = '', float $aspect_ratio = 1.3)
