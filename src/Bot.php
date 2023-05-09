@@ -5,6 +5,26 @@ namespace PhpPackagist\WorkWeixinBot;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\RequestOptions;
+use PhpPackagist\WorkWeixinBot\Contracts\MessageInterface;
+use PhpPackagist\WorkWeixinBot\Messages\File;
+use PhpPackagist\WorkWeixinBot\Messages\Image;
+use PhpPackagist\WorkWeixinBot\Messages\Markdown;
+use PhpPackagist\WorkWeixinBot\Messages\News;
+use PhpPackagist\WorkWeixinBot\Messages\News\Article;
+use PhpPackagist\WorkWeixinBot\Messages\NewsNotice;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\CardAction;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\CardImage;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\EmphasisContent;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\HorizontalContent;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\ImageTextArea;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Jump;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\MainTitle;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\QuoteArea;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\Source;
+use PhpPackagist\WorkWeixinBot\Messages\Notice\VerticalContent;
+use PhpPackagist\WorkWeixinBot\Messages\Text;
+use PhpPackagist\WorkWeixinBot\Messages\TextNotice;
 
 class Bot
 {
@@ -12,6 +32,11 @@ class Bot
      * @var string
      */
     public const API_SEND = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=%s';
+
+    /**
+     * @var string
+     */
+    public const API_UPLOAD = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=%s&type=file';
 
     /**
      * @var ClientInterface
@@ -36,80 +61,99 @@ class Bot
     }
 
     /**
-     * send text message.
+     * Send message.
+     *
+     * @param MessageInterface $message
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function send(MessageInterface $message): Response
+    {
+
+        $response = $this->client->request(
+            'POST',
+            sprintf(self::API_SEND, $this->config['key']),
+            [
+                RequestOptions::JSON => $message->toArray(),
+            ]
+        );
+        return new Response($response);
+    }
+
+    /**
+     * Send Text Message.
      *
      * @param string $content
+     * @param array  $mentionedList
      * @param array  $mentionedMobileList
-     * @param array  $mentionedUseridList
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendText(string $content, array $mentionedMobileList = [], array $mentionedUseridList = []): Response
+    public function sendText(string $content, array $mentionedList = [], array $mentionedMobileList = []): Response
     {
-        $data = [
-            'msgtype' => 'text',
-            'text'    => [
-                'content'               => $content,
-                'mentioned_mobile_list' => $mentionedMobileList,
-                'mentioned_userid_list' => $mentionedUseridList,
-            ],
-        ];
-
-        return $this->sendRaw($data);
+        return $this->send(Text::make(
+            $content,
+            $mentionedList,
+            $mentionedMobileList
+        ));
     }
 
     /**
-     * send markdown message.
+     * Send File Message.
+     *
+     * @param string $mediaId
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function sendFile(string $mediaId): Response
+    {
+        return $this->send(File::make(
+            $mediaId
+        ));
+    }
+
+    /**
+     * Send Image Message.
+     *
+     * @param string $filePath
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function sendImage(string $filePath): Response
+    {
+        return $this->send(Image::file(
+            $filePath
+        ));
+    }
+
+    /**
+     * Send Markdown Message.
      *
      * @param string $content
-     * @param array  $mentionedMobileList
-     * @param array  $mentionedUseridList
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendMarkdown(string $content, array $mentionedMobileList = [], array $mentionedUseridList = []): Response
+    public function sendMarkdown(string $content): Response
     {
-        $data = [
-            'msgtype'  => 'markdown',
-            'markdown' => [
-                'content'               => $content,
-                'mentioned_mobile_list' => $mentionedMobileList,
-                'mentioned_userid_list' => $mentionedUseridList,
-            ],
-        ];
-
-        return $this->sendRaw($data);
+        return $this->send(Markdown::make(
+            $content
+        ));
     }
 
     /**
-     * send image message.
+     * Send News Message.
      *
-     * @param string $base64
-     * @param string $md5
-     *
-     * @return Response
-     *
-     * @throws GuzzleException
-     */
-    public function sendImage(string $base64, string $md5): Response
-    {
-        $data = [
-            'msgtype' => 'image',
-            'image'   => [
-                'base64' => $base64,
-                'md5'    => $md5,
-            ],
-        ];
-
-        return $this->sendRaw($data);
-    }
-
-    /**
-     * @param array $articles
+     * @param  array{Article}  $articles
      *
      * @return Response
      *
@@ -117,32 +161,103 @@ class Bot
      */
     public function sendNews(array $articles): Response
     {
-        $data = [
-            'msgtype' => 'news',
-            'news'    => [
-                'articles' => $articles,
-            ],
-        ];
-
-        return $this->sendRaw($data);
+        return $this->send(News::make(
+            $articles
+        ));
     }
 
     /**
-     * send raw message.
+     * Send Text Notice Message.
      *
-     * @param array $params
+     * @param Source|null          $source
+     * @param MainTitle|null       $mainTitle
+     * @param EmphasisContent|null $emphasisContent
+     * @param QuoteArea|null       $quoteArea
+     * @param string               $subTitleText
+     * @param array{HorizontalContent}               $horizontalContentList
+     * @param array{Jump}                $jumpList
+     * @param CardAction|null $cardAction
      *
      * @return Response
      *
      * @throws GuzzleException
      */
-    public function sendRaw(array $params = []): Response
-    {
-        $url = sprintf(self::API_SEND, $this->config['key']);
+    public function sendTextNotice(
+        ?Source $source = null,
+        ?MainTitle $mainTitle = null,
+        ?EmphasisContent $emphasisContent = null,
+        ?QuoteArea $quoteArea = null,
+        string $subTitleText = '',
+        array $horizontalContentList = [],
+        array $jumpList = [],
+        ?CardAction $cardAction = null
+    ): Response {
+        return $this->send(TextNotice::make(
+            $source,
+            $mainTitle,
+            $emphasisContent,
+            $quoteArea,
+            $subTitleText,
+            $horizontalContentList,
+            $jumpList,
+            $cardAction
+        ));
+    }
 
-        $response = $this->client->request('POST', $url, [
-            'json' => $params,
-        ]);
+    /**
+     * Send News Notice Message.
+     *
+     * @param Source|null        $source
+     * @param MainTitle|null     $mainTitle
+     * @param CardImage|null     $cardImage
+     * @param ImageTextArea|null $imageTextArea
+     * @param QuoteArea|null     $quoteArea
+     * @param array{VerticalContent}              $verticalContentList
+     * @param array{HorizontalContent}              $horizontalContentList
+     * @param array{Jump}              $jumpList
+     * @param CardAction|null $cardAction
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function sendNewsNotice(
+        ?Source $source = null,
+        ?MainTitle $mainTitle = null,
+        ?CardImage $cardImage = null,
+        ?ImageTextArea $imageTextArea = null,
+        ?QuoteArea $quoteArea = null,
+        array $verticalContentList = [],
+        array $horizontalContentList = [],
+        array $jumpList = [],
+        ?CardAction $cardAction = null
+    ): Response {
+        return $this->send(NewsNotice::make(...func_get_args()));
+    }
+
+    /**
+     * Upload file.
+     *
+     * @param string $filePath
+     *
+     * @return Response
+     *
+     * @throws GuzzleException
+     */
+    public function upload(string $filePath): Response
+    {
+        $response = $this->client->request(
+            'POST',
+            sprintf(self::API_UPLOAD, $this->config['key']),
+            [
+                RequestOptions::MULTIPART => [
+                    [
+                        'name'     => 'media',
+                        'contents' => fopen($filePath, 'r'),
+                    ],
+                ],
+            ]
+        );
 
         return new Response($response);
     }
