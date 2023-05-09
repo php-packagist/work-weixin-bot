@@ -22,6 +22,9 @@ class Markdown extends AbstractMessage
      *          [it's a link](https://www.baidu.com)
      *          `code`
      *          > quote
+     *          <font color="info">green</font>
+     *          <font color="comment">gray</font>
+     *          <font color="warning">orange red</font>
      */
     protected string $content;
 

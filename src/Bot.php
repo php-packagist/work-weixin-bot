@@ -71,11 +71,14 @@ class Bot
      */
     public function send(MessageInterface $message): Response
     {
-        $response = $this->client->request('POST',
-            sprintf(self::API_SEND, $this->config['key']), [
-                RequestOptions::JSON => $message->toArray(),
-            ]);
 
+        $response = $this->client->request(
+            'POST',
+            sprintf(self::API_SEND, $this->config['key']),
+            [
+                RequestOptions::JSON => $message->toArray(),
+            ]
+        );
         return new Response($response);
     }
 
@@ -93,7 +96,9 @@ class Bot
     public function sendText(string $content, array $mentionedList = [], array $mentionedMobileList = []): Response
     {
         return $this->send(Text::make(
-            $content, $mentionedList, $mentionedMobileList
+            $content,
+            $mentionedList,
+            $mentionedMobileList
         ));
     }
 
@@ -241,15 +246,18 @@ class Bot
      */
     public function upload(string $filePath): Response
     {
-        $response = $this->client->request('POST',
-            sprintf(self::API_UPLOAD, $this->config['key']), [
+        $response = $this->client->request(
+            'POST',
+            sprintf(self::API_UPLOAD, $this->config['key']),
+            [
                 RequestOptions::MULTIPART => [
                     [
                         'name'     => 'media',
                         'contents' => fopen($filePath, 'r'),
                     ],
                 ],
-            ]);
+            ]
+        );
 
         return new Response($response);
     }
